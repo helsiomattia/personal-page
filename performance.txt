@@ -1,0 +1,278 @@
+Você está trabalhando no meu projeto React + Vite do portfólio pessoal publicado em:
+
+https://helsiomattia.github.io/personal-page/
+
+Repositório:
+
+https://github.com/helsiomattia/personal-page
+
+Pasta local do projeto:
+
+C:\Users\helsi\OneDrive\Documentos\personal-site-master-Base-exemplo
+
+Preciso que você faça ajustes visuais e técnicos no projeto, sem quebrar o deploy no GitHub Pages.
+
+Contexto visual atual:
+- O site já abriu corretamente.
+- Porém a aba do navegador ainda mostra "Seu Nome | Developer Portfolio".
+- A primeira dobra da home está com muito espaço vazio vertical, principalmente no topo e na área do Hero.
+- Quero deixar o site mais leve, rápido e profissional.
+
+Faça os ajustes abaixo.
+
+---
+
+## 1. Corrigir o título da aba do navegador
+
+Procure no projeto onde está definido:
+
+Seu Nome | Developer Portfolio
+
+Provavelmente está no arquivo:
+
+index.html
+
+Troque o conteúdo da tag title para:
+
+Helsio Mattia | Salesforce CRM Specialist
+
+Exemplo esperado:
+
+<title>Helsio Mattia | Salesforce CRM Specialist</title>
+
+Também verifique se existe algum componente React ou biblioteca alterando document.title. Se existir, ajuste para o mesmo título.
+
+---
+
+## 2. Corrigir metadados básicos do site
+
+No index.html, garanta que existam metadados profissionais, leves e corretos.
+
+Use algo como:
+
+<meta name="description" content="Portfólio profissional de Helsio Mattia, Salesforce CRM Specialist com experiência em automação, Service Cloud, Sales Cloud, processos de CRM e soluções escaláveis." />
+<meta name="author" content="Helsio Mattia" />
+<meta name="theme-color" content="#f8fbff" />
+
+Se existir Open Graph, ajuste também:
+
+<meta property="og:title" content="Helsio Mattia | Salesforce CRM Specialist" />
+<meta property="og:description" content="Portfólio profissional de Helsio Mattia, Salesforce CRM Specialist." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://helsiomattia.github.io/personal-page/" />
+
+Não adicione imagens pesadas de preview agora, a não ser que já exista uma imagem otimizada no projeto.
+
+---
+
+## 3. Reduzir espaçamentos excessivos na primeira dobra
+
+O Hero atual está bonito, mas a primeira seção tem muito espaço vazio.
+
+Procure os componentes relacionados ao Hero, provavelmente em algo como:
+
+src/components/sections/Hero.jsx
+src/components/Hero.jsx
+src/sections/Hero.jsx
+src/components/layout/Navbar.jsx
+src/theme/theme.js
+src/index.css
+src/App.jsx
+
+Ajuste os espaçamentos para deixar a primeira dobra mais compacta e premium.
+
+Objetivo visual:
+- Manter o Hero elegante.
+- Reduzir o espaço vazio acima do conteúdo principal.
+- Aproximar o bloco "Salesforce CRM no Efí Bank" e o texto "Olá, eu sou" do topo útil da tela.
+- Evitar que o conteúdo fique perdido no meio de uma área branca enorme.
+- Manter boa leitura em desktop e mobile.
+
+Sugestões técnicas:
+- Se o Hero estiver com minHeight: '100vh', reduza para algo entre 78vh e 88vh.
+- Se houver paddingTop muito alto, reduza.
+- Se houver marginTop grande, reduza.
+- Se a navbar for fixa, considere compensar com paddingTop menor e controlado.
+- Se houver Box/Container com py: 16, py: 18 ou valores grandes, reduza para py: 8, py: 10 ou responsivo.
+- Em desktop, o Hero pode ter algo como:
+  - minHeight: 'calc(100vh - 80px)' ou '82vh'
+  - pt: { xs: 10, md: 12 }
+  - pb: { xs: 8, md: 10 }
+- Em mobile, garanta que não fique apertado:
+  - pt: { xs: 8, md: 12 }
+  - pb: { xs: 6, md: 10 }
+
+Importante:
+Não reduza tanto a ponto de parecer amador ou apertado.
+A ideia é deixar mais premium, objetivo e com menos espaço desperdiçado.
+
+---
+
+## 4. Reduzir altura visual das seções internas se estiver exagerado
+
+Verifique também as seções:
+
+Sobre
+Experiência
+Credenciais
+Expertise
+Contato
+
+Se elas tiverem padding vertical muito grande, reduza um pouco.
+
+Exemplo:
+- Se estiver py: 16, reduzir para py: { xs: 8, md: 10 }
+- Se estiver py: 14, reduzir para py: { xs: 8, md: 10 }
+- Se estiver com marginBottom muito grande entre títulos e cards, reduzir moderadamente.
+
+Objetivo:
+O site deve continuar com respiro visual, mas sem parecer vazio demais.
+
+---
+
+## 5. Revisar responsividade
+
+Depois dos ajustes, valide:
+- Desktop grande.
+- Notebook.
+- Tablet.
+- Mobile.
+
+No mobile:
+- Navbar não pode quebrar layout.
+- Nome "Helsio Mattia" não pode estourar a largura.
+- Botões e ícones precisam continuar acessíveis.
+- Espaçamentos devem ficar menores, mas ainda confortáveis.
+
+Se necessário, ajuste fontSize responsivo usando breakpoints.
+
+---
+
+## 6. Fazer validação de performance e deixar o site leve
+
+Quero que você faça uma revisão para deixar o site muito leve para abrir.
+
+Execute uma análise técnica no projeto e corrija o que for seguro.
+
+Verifique:
+
+### Dependências
+- Remova dependências não usadas.
+- Não adicione bibliotecas pesadas sem necessidade.
+- Verifique se há imports desnecessários.
+
+### Imagens e assets
+- Procure imagens pesadas em public, src/assets ou pastas similares.
+- Se houver imagens grandes, recomende ou aplique compressão.
+- Preferir WebP quando possível.
+- Não usar imagens enormes se aparecem pequenas na tela.
+- Adicionar loading="lazy" em imagens que não aparecem na primeira dobra.
+- Para imagens importantes da primeira dobra, evitar lazy se prejudicar LCP.
+
+### Ícones
+- Se o projeto usa bibliotecas de ícones, importar apenas os ícones usados.
+- Evitar importar pacotes inteiros.
+
+### Fontes
+- Verifique se há fontes externas pesadas.
+- Se usar Google Fonts, limitar pesos.
+- Usar font-display: swap quando aplicável.
+- Evitar carregar muitos pesos como 100, 200, 300, 400, 500, 600, 700, 800, 900 sem necessidade.
+
+### Animações
+- Manter animações suaves, mas evitar excesso.
+- Evitar animações pesadas no background.
+- Verificar se há blur, box-shadow ou backdrop-filter em excesso.
+- Reduzir efeitos que possam prejudicar performance em mobile.
+
+### Bundle
+- Rode:
+
+npm run build
+
+- Analise o tamanho dos arquivos gerados em dist/assets.
+- Se algum bundle JS/CSS estiver grande demais, identifique por quê.
+- Não implemente code splitting complexo se o site for pequeno, mas corrija imports desnecessários.
+
+### Console
+- Rode o site localmente com:
+
+npm run dev
+
+- Verifique no navegador se o console apresenta erros ou warnings importantes.
+- Corrija erros de React, imports quebrados, assets não encontrados ou links inválidos.
+
+---
+
+## 7. Validar build final
+
+Depois de tudo, rode:
+
+npm install
+npm run build
+
+O build precisa passar sem erros.
+
+Se der erro, corrija antes de finalizar.
+
+Depois rode também:
+
+npm run preview
+
+E valide localmente se o site abre corretamente.
+
+---
+
+## 8. Não quebrar GitHub Pages
+
+Mantenha a configuração correta do Vite para GitHub Pages.
+
+No vite.config.js deve continuar existindo:
+
+base: '/personal-page/'
+
+Exemplo:
+
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  base: '/personal-page/',
+});
+
+Não remova isso.
+
+---
+
+## 9. Resultado esperado
+
+Ao final, me entregue um resumo com:
+
+1. Arquivos alterados.
+2. O que foi alterado no título da aba.
+3. Quais espaçamentos foram reduzidos.
+4. Quais melhorias de performance foram feitas.
+5. Resultado do npm run build.
+6. Tamanho aproximado dos principais arquivos gerados em dist/assets.
+7. Se há algum ponto que ainda recomenda melhorar depois.
+
+---
+
+## 10. Depois das correções, eu vou publicar com estes comandos
+
+Não execute deploy automaticamente sem eu pedir.
+
+Apenas deixe o projeto pronto para eu rodar:
+
+git add .
+git commit -m "Ajusta titulo, espacamentos e performance do portfolio"
+git push origin main
+npm run deploy
+
+Lembre-se:
+- Não reescreva o layout inteiro.
+- Não mude a identidade visual principal.
+- Não remova conteúdo importante.
+- Foque em corrigir título, reduzir espaços excessivos e melhorar performance.
+- O site deve continuar com visual premium, leve e profissional.

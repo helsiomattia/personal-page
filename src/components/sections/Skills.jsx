@@ -127,7 +127,7 @@ export default function Skills() {
       id="skills"
       component="section"
       sx={{
-        py: { xs: 10, md: 14 },
+        py: { xs: 8, md: 10 },
         background: 'linear-gradient(180deg, #FFFFFF 0%, #F6FAFD 100%)',
       }}
     >

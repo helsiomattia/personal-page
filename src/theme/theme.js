@@ -121,7 +121,7 @@ const theme = createTheme({
           '&:hover': {
             border: `1px solid ${alpha(PRIMARY, 0.28)}`,
             transform: 'translateY(-5px)',
-            boxShadow: `0 20px 50px ${alpha(PRIMARY, 0.12)}`,
+            boxShadow: `0 14px 34px ${alpha(PRIMARY, 0.1)}`,
           },
         },
       },

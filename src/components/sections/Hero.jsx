@@ -25,7 +25,7 @@ function Orb({ sx }) {
       sx={{
         position: 'absolute',
         borderRadius: '50%',
-        filter: 'blur(90px)',
+        filter: 'blur(56px)',
         pointerEvents: 'none',
         ...sx,
       }}
@@ -88,20 +88,21 @@ export default function Hero() {
       id="home"
       component="section"
       sx={{
-        minHeight: '100vh',
+        minHeight: { xs: '88vh', md: '84vh' },
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
         overflow: 'hidden',
         background: 'linear-gradient(180deg, #F6FAFD 0%, #EAF6FC 100%)',
-        pt: { xs: 10, md: 0 },
+        pt: { xs: 9, md: 8 },
+        pb: { xs: 6, md: 7 },
       }}
     >
       {/* ── Background orbs ── */}
       <Orb
         sx={{
-          width: { xs: 350, md: 600 },
-          height: { xs: 350, md: 600 },
+          width: { xs: 300, md: 520 },
+          height: { xs: 300, md: 520 },
           background: 'radial-gradient(circle, rgba(26,140,216,0.18) 0%, transparent 70%)',
           top: '-80px',
           left: { xs: '-100px', md: '-150px' },
@@ -110,8 +111,8 @@ export default function Hero() {
       />
       <Orb
         sx={{
-          width: { xs: 300, md: 500 },
-          height: { xs: 300, md: 500 },
+          width: { xs: 260, md: 420 },
+          height: { xs: 260, md: 420 },
           background: 'radial-gradient(circle, rgba(43,179,163,0.16) 0%, transparent 70%)',
           bottom: { xs: '-50px', md: '0px' },
           right: { xs: '-80px', md: '-100px' },
@@ -120,8 +121,8 @@ export default function Hero() {
       />
       <Orb
         sx={{
-          width: { xs: 200, md: 350 },
-          height: { xs: 200, md: 350 },
+          width: { xs: 180, md: 300 },
+          height: { xs: 180, md: 300 },
           background: 'radial-gradient(circle, rgba(26,140,216,0.1) 0%, transparent 70%)',
           top: '50%',
           left: '50%',
@@ -158,7 +159,7 @@ export default function Hero() {
                 label={profile.availableLabel}
                 size="small"
                 sx={{
-                  mb: 3,
+                  mb: 2,
                   bgcolor: alpha('#10B981', 0.12),
                   border: `1px solid ${alpha('#10B981', 0.35)}`,
                   color: '#10B981',
@@ -177,7 +178,7 @@ export default function Hero() {
               variant="h1"
               sx={{
                 fontSize: { xs: '2.5rem', sm: '3.5rem', md: '5rem', lg: '6rem' },
-                mb: 1.5,
+                mb: 1,
                 lineHeight: 1.05,
               }}
             >
@@ -215,9 +216,9 @@ export default function Hero() {
               variant="h2"
               sx={{
                 fontSize: { xs: '1.4rem', sm: '1.8rem', md: '2.5rem' },
-                mb: 3,
+                mb: 2,
                 fontWeight: 600,
-                minHeight: { xs: '2.5rem', md: '3.5rem' },
+                minHeight: { xs: '2.2rem', md: '3rem' },
                 display: 'flex',
                 alignItems: 'center',
                 gap: 1,
@@ -257,9 +258,9 @@ export default function Hero() {
               sx={{
                 maxWidth: { xs: '100%', md: '580px' },
                 color: 'text.secondary',
-                mb: 5,
+                mb: 3.5,
                 fontSize: { xs: '1rem', md: '1.1rem' },
-                lineHeight: 1.9,
+                lineHeight: 1.75,
               }}
             >
               {profile.description}
@@ -274,7 +275,7 @@ export default function Hero() {
                 flexWrap: 'wrap',
                 gap: 2,
                 alignItems: 'center',
-                mb: 5,
+                mb: 3.5,
               }}
             >
               <Button
@@ -369,7 +370,7 @@ export default function Hero() {
         <Box
           sx={{
             position: 'absolute',
-            bottom: { xs: 24, md: 40 },
+            bottom: { xs: 16, md: 24 },
             left: '50%',
             transform: 'translateX(-50%)',
             display: 'flex',

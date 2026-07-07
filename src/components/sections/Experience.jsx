@@ -29,7 +29,7 @@ function ExperienceCard({ exp, index }) {
         sx={{
           display: 'flex',
           gap: { xs: 2, md: 4 },
-          mb: 4,
+          mb: 3,
           position: 'relative',
         }}
       >
@@ -187,7 +187,7 @@ export default function Experience() {
       id="experience"
       component="section"
       sx={{
-        py: { xs: 10, md: 14 },
+        py: { xs: 8, md: 10 },
         background: 'linear-gradient(180deg, #FFFFFF 0%, #F6FAFD 100%)',
       }}
     >

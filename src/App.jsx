@@ -1,13 +1,15 @@
+import { lazy, Suspense } from 'react';
 import { ThemeProvider, CssBaseline, GlobalStyles, Box } from '@mui/material';
 import theme from './theme/theme';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Hero from './components/sections/Hero';
-import About from './components/sections/About';
-import Experience from './components/sections/Experience';
-import Projects from './components/sections/Projects';
-import Skills from './components/sections/Skills';
-import Contact from './components/sections/Contact';
+
+const About = lazy(() => import('./components/sections/About'));
+const Experience = lazy(() => import('./components/sections/Experience'));
+const Projects = lazy(() => import('./components/sections/Projects'));
+const Skills = lazy(() => import('./components/sections/Skills'));
+const Contact = lazy(() => import('./components/sections/Contact'));
 
 const globalStyles = `
   html { scroll-behavior: smooth; }
@@ -46,11 +48,13 @@ export default function App() {
         <Navbar />
         <main>
           <Hero />
-          <About />
-          <Experience />
-          <Projects />
-          <Skills />
-          <Contact />
+          <Suspense fallback={null}>
+            <About />
+            <Experience />
+            <Projects />
+            <Skills />
+            <Contact />
+          </Suspense>
         </main>
         <Footer />
       </Box>

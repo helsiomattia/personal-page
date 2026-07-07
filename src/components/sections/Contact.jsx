@@ -195,7 +195,7 @@ export default function Contact() {
       id="contact"
       component="section"
       sx={{
-        py: { xs: 10, md: 16 },
+        py: { xs: 8, md: 11 },
         background: 'linear-gradient(180deg, #F6FAFD 0%, #EAF6FC 100%)',
         position: 'relative',
         overflow: 'hidden',
@@ -206,14 +206,14 @@ export default function Contact() {
         aria-hidden="true"
         sx={{
           position: 'absolute',
-          width: { xs: 300, md: 500 },
-          height: { xs: 300, md: 500 },
+          width: { xs: 260, md: 420 },
+          height: { xs: 260, md: 420 },
           borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(43,179,163,0.18) 0%, transparent 70%)',
           bottom: '-100px',
           left: '50%',
           transform: 'translateX(-50%)',
-          filter: 'blur(60px)',
+          filter: 'blur(42px)',
           pointerEvents: 'none',
         }}
       />
@@ -230,8 +230,8 @@ export default function Contact() {
           <Box
             sx={{
               textAlign: 'center',
-              mb: 7,
-              p: { xs: 4, md: 6 },
+              mb: 5,
+              p: { xs: 3, md: 4 },
               borderRadius: '20px',
               background: 'linear-gradient(135deg, rgba(26,140,216,0.08) 0%, rgba(43,179,163,0.08) 100%)',
               border: '1px solid rgba(26,140,216,0.18)',
@@ -255,7 +255,7 @@ export default function Contact() {
               </Box>
             </Typography>
 
-            <Typography variant="body1" sx={{ color: 'text.secondary', mb: 4, maxWidth: 480, mx: 'auto' }}>
+            <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, maxWidth: 480, mx: 'auto' }}>
               Se você quer conversar sobre Salesforce, Sales Cloud, Service Cloud
               ou automação de processos, minha caixa de entrada está aberta.
             </Typography>

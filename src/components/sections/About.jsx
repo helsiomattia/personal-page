@@ -31,7 +31,7 @@ export default function About() {
       id="about"
       component="section"
       sx={{
-        py: { xs: 10, md: 14 },
+        py: { xs: 8, md: 10 },
         background: 'linear-gradient(180deg, #EAF6FC 0%, #FFFFFF 100%)',
       }}
     >
@@ -42,7 +42,7 @@ export default function About() {
           subtitle="Um resumo da minha trajetória em Salesforce, CRM e processos corporativos."
         />
 
-        <Grid container spacing={6} alignItems="flex-start">
+        <Grid container spacing={{ xs: 4, md: 5 }} alignItems="flex-start">
           {/* ── Left column: avatar + stats ── */}
           <Grid item xs={12} md={4}>
             <AnimatedBox delay={0.1}>
@@ -147,14 +147,14 @@ export default function About() {
           {/* ── Right column: text + tech stack ── */}
           <Grid item xs={12} md={8}>
             <AnimatedBox delay={0.2}>
-              <Box sx={{ mb: 4 }}>
+              <Box sx={{ mb: 3 }}>
                 {profile.about.map((paragraph, i) => (
                   <Typography
                     key={i}
                     variant="body1"
                     sx={{
                       color: 'text.secondary',
-                      mb: 2,
+                      mb: 1.5,
                       '&:last-of-type': { mb: 0 },
                       lineHeight: 1.85,
                     }}
@@ -168,7 +168,7 @@ export default function About() {
             {/* Tech stack */}
             <AnimatedBox delay={0.3}>
               <Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2.5 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                   <CodeOutlinedIcon sx={{ color: 'primary.main', fontSize: '1.1rem' }} />
                   <Typography
                     variant="overline"

@@ -201,7 +201,7 @@ export default function Projects() {
       id="projects"
       component="section"
       sx={{
-        py: { xs: 10, md: 14 },
+        py: { xs: 8, md: 10 },
         background: 'linear-gradient(180deg, #F6FAFD 0%, #FFFFFF 100%)',
       }}
     >
@@ -219,7 +219,7 @@ export default function Projects() {
             flexWrap: 'wrap',
             gap: 1,
             justifyContent: 'center',
-            mb: 6,
+            mb: 4,
           }}
         >
           {projectFilters.map((f) => (
@@ -271,7 +271,7 @@ export default function Projects() {
         )}
 
         {/* GitHub CTA */}
-        <Box sx={{ textAlign: 'center', mt: 8 }}>
+        <Box sx={{ textAlign: 'center', mt: 6 }}>
           <Button
             component="a"
             href={profile.github}

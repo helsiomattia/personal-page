@@ -73,7 +73,7 @@ export default function Navbar() {
           backgroundColor: scrolled
             ? alpha('#FFFFFF', 0.86)
             : 'transparent',
-          backdropFilter: scrolled ? 'blur(20px)' : 'none',
+          backdropFilter: scrolled ? 'blur(12px)' : 'none',
           borderBottom: scrolled
             ? '1px solid rgba(31,41,55,0.08)'
             : '1px solid transparent',

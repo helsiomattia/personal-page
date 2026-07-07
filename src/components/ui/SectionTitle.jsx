@@ -11,7 +11,7 @@ import AnimatedBox from './AnimatedBox';
 export default function SectionTitle({ overline, title, subtitle, align = 'center' }) {
   return (
     <AnimatedBox>
-      <Box sx={{ textAlign: align, mb: { xs: 6, md: 8 } }}>
+      <Box sx={{ textAlign: align, mb: { xs: 4, md: 5 } }}>
         {overline && (
           <Typography
             component="span"
@@ -48,7 +48,7 @@ export default function SectionTitle({ overline, title, subtitle, align = 'cente
               maxWidth: '640px',
               mx: align === 'center' ? 'auto' : 0,
               color: 'text.secondary',
-              mt: 1.5,
+              mt: 1,
             }}
           >
             {subtitle}
@@ -58,7 +58,7 @@ export default function SectionTitle({ overline, title, subtitle, align = 'cente
         {/* Barra de destaque gradiente */}
         <Box
           sx={{
-            mt: 3,
+            mt: 2,
             mx: align === 'center' ? 'auto' : 0,
             width: 56,
             height: 4,
