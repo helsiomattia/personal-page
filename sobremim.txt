@@ -1,0 +1,91 @@
+Sobre mim
+
+Helsio Mattia
+Salesforce Consultant | CRM Specialist | Sales & Service Cloud
+
+Trajetória Profissional
+
+Contato e links
+- E-mail: helsiomattia@gmail.com
+- LinkedIn: linkedin.com/in/helsiomattia
+- GitHub: https://github.com/helsiomattia
+- Perfil Trailblazer: https://trailblazer.me/id/helsiomattia
+- Telefone: +55 49 98814-5714
+
+Bio
+Profissional Salesforce com mais de 5 anos de experiência em desenho e otimização de soluções de CRM, com foco em escalabilidade e performance de negócio.
+
+Atualmente atua no Efí Bank, liderando iniciativas para melhorar operações de atendimento, fluxos de automação e eficiência do CRM com Sales e Service Cloud.
+
+Combina visão técnica e de negócio, apoiada por histórico anterior em consultoria ERP e QA, o que fortalece a leitura ponta a ponta dos processos corporativos.
+
+Idiomas
+- Inglês: Professional Working
+- Português: Nativo / Bilíngue
+
+Expertise
+- Salesforce Ecosystem
+- CRM Strategy
+- Sales Cloud
+- Service Cloud
+- Process Automation
+- Flow Builder
+- Data Modeling
+- Omni-Channel
+- Business Analysis
+- User Adoption
+
+Certificações
+- Salesforce Certified Administrator
+- Salesforce Certified App Builder
+- Salesforce AI Associate
+
+Experiência Profissional
+
+Efí Bank
+- Período: Ago 2024 - Atual
+- Cargo: Salesforce CRM Administrator
+- Descrição: Gestão e otimização da plataforma Salesforce, alinhando CRM aos processos e necessidades do negócio. Atua com customizações, resolução de problemas, documentação técnica, suporte aos usuários e iniciativas de performance, escalabilidade e automação.
+
+EQI Investimentos
+- Período: Mar 2022 - Jul 2024
+- Cargo: Salesforce CRM Analyst
+- Descrição: Trabalhou na evolução da plataforma Salesforce com foco em objetos, campos, layouts, automações, documentação, suporte e tradução de requisitos em soluções práticas.
+
+Cloud11
+- Período: Out 2021 - Fev 2022
+- Cargo: Salesforce CRM Analyst
+- Descrição: Durante experiência internacional no Egito, iniciou sua trajetória em Salesforce, colaborando com times de diferentes regiões para adaptar a plataforma às necessidades locais.
+
+ControlSoft Assessoria
+- Período: Mar 2018 - Jul 2019
+- Cargo: ERP Software Quality Assurance (QA)
+- Descrição: Atuação com planejamento, execução e reporte de testes em ERP do agronegócio, com foco em qualidade, confiabilidade e validação de dados críticos.
+
+Proxsis Sistemas de Gestão Empresarial
+- Período: Mar 2016 - Jul 2017
+- Cargo: ERP Software Consultant
+- Descrição: Liderou a implementação de ERP em indústrias, mapeando processos, dando suporte, treinando equipes e documentando soluções para otimizar a eficiência operacional.
+
+Formação
+- MBA em Engenharia de Software | UTFPR | 2023 - 2024
+- Sistemas de Informação | UNIASSELVI | Desde 2023
+- MBA em Gestão de Projetos | UNIASSELVI | 2021
+- MBA em Business Intelligence | UNIASSELVI | 2020 - 2021
+- Bacharelado em Administração | Unochapecó | 2011 - 2016
+
+Conquistas & Links
+- Agile Scrum Master
+- Bootcamp Banco PAN Java Developer
+- Bootcamp Cloud AWS
+- Microsoft AI for Tech Bootcamp
+- Business Analysis (CCBA)
+- Programming Logic
+- Programming Logic & Algorithms
+- Git Training & Version Control
+- Emotional Intelligence 2.0
+- Leadership Development
+- Customer Success Management
+- User Experience (UX) Design
+- Scrum Fundamentals
+- Perfil Trailblazer: https://trailblazer.me/id/helsiomattia
