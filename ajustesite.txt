@@ -1,0 +1,174 @@
+Você está trabalhando em um projeto React + Vite que será publicado no GitHub Pages no repositório:
+
+https://github.com/helsiomattia/personal-page
+
+A URL final do site será:
+
+https://helsiomattia.github.io/personal-page/
+
+O projeto local está em:
+
+C:\Users\helsi\OneDrive\Documentos\personal-site-master-Base-exemplo
+
+Preciso que você corrija completamente o projeto para que ele funcione corretamente no GitHub Pages.
+
+Faça as seguintes alterações:
+
+1. Corrigir configuração do Vite para GitHub Pages
+
+Abra o arquivo vite.config.js e garanta que ele fique assim:
+
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  base: '/personal-page/',
+});
+
+O campo base é obrigatório porque o site será servido dentro de /personal-page/ e não diretamente na raiz do domínio.
+
+2. Corrigir src/main.jsx
+
+Verifique se o arquivo src/main.jsx está válido. Ele deve renderizar o App corretamente dentro do elemento root.
+
+Use este conteúdo:
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+Se o arquivo index.css não existir, crie ou remova o import somente se o projeto realmente não usar CSS global.
+
+3. Corrigir src/App.jsx
+
+Verifique o arquivo src/App.jsx.
+
+Ele não pode estar assim:
+
+export default function App() { return (  ); }
+
+Isso quebra o React.
+
+Corrija o App.jsx para retornar uma estrutura válida em JSX.
+
+Se o projeto já tiver componentes, páginas ou conteúdo existente, mantenha tudo e apenas corrija a renderização.
+
+Se estiver vazio ou quebrado, crie uma estrutura básica funcional, por exemplo:
+
+export default function App() {
+  return (
+    <main>
+      <h1>Helsio Mattia</h1>
+      <p>Salesforce Developer Portfolio</p>
+    </main>
+  );
+}
+
+Mas antes de substituir tudo, verifique se existem componentes em src/components, src/pages ou arquivos similares que deveriam ser importados no App.jsx.
+
+4. Verificar index.html
+
+Abra o index.html e confirme que existe:
+
+<div id="root"></div>
+
+E que o script principal aponta para:
+
+<script type="module" src="/src/main.jsx"></script>
+
+Não altere para caminhos manuais de dist.
+
+5. Verificar package.json
+
+Garanta que o package.json tenha estes scripts:
+
+"scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview",
+  "deploy": "gh-pages -d dist"
+}
+
+Se já existirem scripts adicionais, preserve-os.
+
+6. Instalar gh-pages
+
+Adicione a dependência de desenvolvimento:
+
+gh-pages
+
+Se for editar manualmente o package.json, adicione em devDependencies.
+
+Caso esteja executando comandos, rode:
+
+npm install --save-dev gh-pages
+
+7. Verificar dependências
+
+Confira se o package.json tem pelo menos:
+
+react
+react-dom
+@vitejs/plugin-react
+vite
+
+Se faltar alguma, corrija.
+
+8. Rodar validações locais
+
+Depois das correções, rode:
+
+npm install
+npm run build
+
+O comando npm run build precisa terminar sem erro.
+
+Se der erro, corrija o código até o build funcionar.
+
+9. Preparar publicação no GitHub Pages
+
+Depois que o build funcionar, o deploy será feito com:
+
+npm run deploy
+
+Esse comando deve publicar a pasta dist na branch gh-pages.
+
+10. Instruções finais que você deve me devolver
+
+Ao final, me diga exatamente:
+
+- Quais arquivos foram alterados.
+- Quais problemas foram encontrados.
+- Se o comando npm run build passou com sucesso.
+- Qual comando devo rodar para subir no GitHub.
+- Qual configuração devo conferir no GitHub Pages.
+
+A configuração esperada no GitHub é:
+
+Repository > Settings > Pages
+
+Source:
+Deploy from a branch
+
+Branch:
+gh-pages
+
+Folder:
+/root
+
+A URL final deve ser:
+
+https://helsiomattia.github.io/personal-page/
+
+Importante:
+Não apague conteúdo útil do projeto sem necessidade.
+Não reescreva o layout inteiro se já existir uma página válida.
+Corrija primeiro os problemas técnicos de build, renderização React e deploy no GitHub Pages.
