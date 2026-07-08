@@ -1,0 +1,79 @@
+Analise a seção final de contato do meu site e ajuste todos os cards/botões para que tenham o mesmo nível de acabamento visual e interação do card “Localização”, que hoje é o único com efeito visual agradável.
+
+Objetivo:
+Padronizar todos os cards de contato (E-mail, LinkedIn, GitHub, Trailblazer, Telefone e Localização) para que todos tenham hover effect, transições suaves, consistência visual e aparência premium.
+
+Problema atual:
+- O card de “Localização” está com aparência melhor.
+- Os outros cards parecem estáticos.
+- Ao passar o mouse, eles praticamente não reagem.
+- Falta consistência entre borda, sombra, fundo, animação e feedback visual.
+
+Ajustes desejados:
+
+1. Padronização de layout
+- Todos os cards devem ter a mesma estrutura visual.
+- Mesmo tamanho base, mesmo espaçamento interno, mesma altura mínima e mesmo alinhamento.
+- Ícone à esquerda, textos à direita.
+- Visual limpo, elegante e profissional.
+
+2. Hover effect
+Aplicar hover em todos os cards com:
+- leve elevação (translateY pequeno, algo como -2px ou -4px)
+- sombra mais visível no hover
+- transição suave (transition-all duration-300)
+- borda levemente destacada no hover
+- fundo um pouco mais forte ou com leve brilho no hover
+- cursor pointer quando o item for clicável
+
+3. Estado interativo
+- E-mail, LinkedIn, GitHub, Trailblazer e Telefone devem ser clicáveis de verdade.
+- O card inteiro deve ser clicável, não apenas o texto.
+- Se estiver usando Link ou <a>, o wrapper inteiro deve receber o hover e o clique.
+- Garantir acessibilidade com focus-visible, outline elegante e navegação por teclado.
+
+4. Consistência visual
+- Reaplicar o mesmo padrão visual do card “Localização” nos demais.
+- Bordas arredondadas suaves.
+- Sombra leve no estado normal.
+- Sombra um pouco maior no hover.
+- Fundo claro e elegante.
+- Cores suaves e premium, sem exagero.
+
+5. Ícones
+- Os ícones devem responder ao hover junto com o card.
+- Exemplo:
+  - mudar levemente a cor
+  - ganhar um pequeno scale
+  - manter consistência entre todos os ícones
+- O bloco do ícone deve seguir o mesmo padrão de moldura em todos os cards.
+
+6. Microinterações
+- Adicionar animação sutil nos ícones ou seta externa.
+- Se houver ícone de link externo/cópia, ele também deve reagir no hover.
+- Caso exista ação de copiar e-mail ou telefone, exibir feedback visual elegante.
+
+7. Estilo desejado
+- Visual premium, moderno, leve e bem acabado.
+- Aparência de portfólio profissional.
+- Fundo claro.
+- Sem roxo e sem contrastes pesados demais.
+- Design consistente com o restante do site.
+
+8. Responsividade
+- Em desktop, manter grid organizado e bem distribuído.
+- Em tablet/mobile, empilhar corretamente sem quebrar alinhamentos.
+- Garantir que os cards continuem bonitos e interativos em telas menores.
+
+9. Revisão técnica
+- Verificar se os cards que não animam estão sem:
+  - hover
+  - transition
+  - group/group-hover
+  - wrapper clicável
+  - sombra/borda padronizada
+- Corrigir isso no código.
+- Se necessário, transformar todos em um componente reutilizável único de ContactCard para manter consistência.
+
+Resultado esperado:
+Todos os cards da seção final devem ter o mesmo acabamento do card de “Localização”, com hover suave, leve elevação, sombra, borda elegante, ícones responsivos e comportamento interativo claro.

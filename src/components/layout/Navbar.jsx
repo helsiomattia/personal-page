@@ -18,14 +18,16 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../LanguageSwitcher';
 import { profile } from '../../data/profile';
 
 const NAV_LINKS = [
-  { label: 'Sobre', id: 'about' },
-  { label: 'Experiência', id: 'experience' },
-  { label: 'Credenciais', id: 'projects' },
-  { label: 'Expertise', id: 'skills' },
-  { label: 'Contato', id: 'contact' },
+  { labelKey: 'nav.about', id: 'about' },
+  { labelKey: 'nav.experience', id: 'experience' },
+  { labelKey: 'nav.projects', id: 'projects' },
+  { labelKey: 'nav.skills', id: 'skills' },
+  { labelKey: 'nav.contact', id: 'contact' },
 ];
 
 function scrollTo(id) {
@@ -34,6 +36,7 @@ function scrollTo(id) {
 }
 
 export default function Navbar() {
+  const { t } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
@@ -153,10 +156,12 @@ export default function Navbar() {
                     '&:hover': { color: 'primary.main', bgcolor: alpha('#1A8CD8', 0.08) },
                   }}
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                 </Button>
               ))}
             </Box>
+
+            <LanguageSwitcher sx={{ display: { xs: 'none', md: 'inline-flex' }, ml: 1 }} />
 
             {/* Curriculum button */}
             {profile.resume && (
@@ -175,7 +180,7 @@ export default function Navbar() {
                   ml: 2,
                 }}
               >
-                Currículo
+                {t('nav.resume')}
               </Button>
             )}
 
@@ -184,7 +189,7 @@ export default function Navbar() {
               color="inherit"
               onClick={() => setMobileOpen(true)}
               sx={{ display: { md: 'none' } }}
-              aria-label="Open menu"
+              aria-label={t('nav.openMenu')}
             >
               <MenuIcon />
             </IconButton>
@@ -208,10 +213,12 @@ export default function Navbar() {
         }}
       >
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 3 }}>
-          <IconButton onClick={() => setMobileOpen(false)} aria-label="Close menu">
+          <IconButton onClick={() => setMobileOpen(false)} aria-label={t('nav.closeMenu')}>
             <CloseIcon />
           </IconButton>
         </Box>
+
+        <LanguageSwitcher sx={{ mb: 3 }} />
 
         <List disablePadding>
           {NAV_LINKS.map((link, index) => (
@@ -235,7 +242,7 @@ export default function Navbar() {
                 >
                   0{index + 1}.
                 </Typography>
-                <ListItemText primary={link.label} primaryTypographyProps={{ fontWeight: 500 }} />
+                <ListItemText primary={t(link.labelKey)} primaryTypographyProps={{ fontWeight: 500 }} />
               </ListItemButton>
             </ListItem>
           ))}
@@ -252,7 +259,7 @@ export default function Navbar() {
               fullWidth
               startIcon={<FileDownloadOutlinedIcon />}
             >
-              Baixar currículo
+              {t('nav.downloadResume')}
             </Button>
           </Box>
         )}

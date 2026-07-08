@@ -1,0 +1,68 @@
+{
+  "language": {
+    "label": "Selecionar idioma"
+  },
+  "nav": {
+    "about": "Sobre",
+    "experience": "Experiência",
+    "projects": "Credenciais",
+    "skills": "Expertise",
+    "contact": "Contato",
+    "resume": "Currículo",
+    "downloadResume": "Baixar currículo",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu"
+  },
+  "hero": {
+    "greeting": "Olá, eu sou",
+    "viewCredentials": "Ver credenciais",
+    "downloadResume": "Baixar currículo",
+    "scroll": "SCROLL",
+    "locationKey": "location"
+  },
+  "about": {
+    "overline": "01. sobre mim",
+    "title": "Quem Sou",
+    "subtitle": "Um resumo da minha trajetória em Salesforce, CRM e processos corporativos.",
+    "expertise": "EXPERTISE"
+  },
+  "experience": {
+    "overline": "02. experiência",
+    "title": "Trajetória Profissional",
+    "subtitle": "Empresas e desafios que consolidaram minha visão técnica e de negócio."
+  },
+  "projects": {
+    "overline": "03. credenciais",
+    "title": "Formação & Conquistas",
+    "subtitle": "Certificações, formação acadêmica e trilhas complementares que sustentam minha atuação em CRM e Salesforce.",
+    "repository": "Repositório",
+    "viewDemo": "Ver demo",
+    "noResults": "Nenhum projeto encontrado para este filtro.",
+    "viewMoreGithub": "Ver mais no GitHub"
+  },
+  "skills": {
+    "overline": "04. expertise",
+    "title": "Especialidades",
+    "subtitle": "Competências, métodos e práticas aplicadas à evolução de CRM, automação e operações."
+  },
+  "contact": {
+    "overline": "05. contato",
+    "title": "Vamos Conversar",
+    "subtitle": "Entre em contato para conversar sobre Salesforce, CRM, automação e operações de negócio.",
+    "readyPrefix": "Pronto para evoluir",
+    "readyHighlight": "seu CRM?",
+    "body": "Se você quer conversar sobre Salesforce, Sales Cloud, Service Cloud ou automação de processos, minha caixa de entrada está aberta.",
+    "sendMessage": "Enviar mensagem",
+    "copy": "Copiar",
+    "copied": "Copiado!",
+    "copyEmail": "Copiar e-mail",
+    "labels": {
+      "email": "E-mail",
+      "phone": "Telefone",
+      "location": "Localização"
+    }
+  },
+  "footer": {
+    "copyrightSuffix": "Salesforce CRM | Sales & Service Cloud"
+  }
+}

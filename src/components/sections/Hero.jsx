@@ -15,7 +15,9 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { useTranslation } from 'react-i18next';
 import { profile } from '../../data/profile';
+import { getLocalizedString, getLocalizedStringArray } from '../../utils/i18nHelper';
 
 /* ── Gradient orb helper ─────────────────────────────────── */
 function Orb({ sx }) {
@@ -40,6 +42,8 @@ function useTypewriter(words, typingSpeed = 90, deletingSpeed = 50, pauseDuratio
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    if (!words.length) return undefined;
+
     const fullText = words[roleIndex];
     let delay;
 
@@ -77,7 +81,10 @@ const itemVariants = {
 
 /* ── Hero component ──────────────────────────────────────── */
 export default function Hero() {
-  const typedRole = useTypewriter(profile.roles);
+  const { i18n, t } = useTranslation();
+  const lang = i18n.resolvedLanguage || 'pt';
+  const roles = getLocalizedStringArray(profile.roles, lang);
+  const typedRole = useTypewriter(roles);
 
   const scrollToProjects = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
@@ -156,7 +163,7 @@ export default function Hero() {
                     sx={{ fontSize: '10px !important', color: '#10B981 !important', animation: 'pulse-ring 2s infinite' }}
                   />
                 }
-                label={profile.availableLabel}
+                label={getLocalizedString(profile.availableLabel, lang)}
                 size="small"
                 sx={{
                   mb: 2,
@@ -194,7 +201,7 @@ export default function Hero() {
                   letterSpacing: '0.05em',
                 }}
               >
-                Olá, eu sou
+                {t('hero.greeting')}
               </Box>
               <Box
                 component="span"
@@ -263,7 +270,7 @@ export default function Hero() {
                 lineHeight: 1.75,
               }}
             >
-              {profile.description}
+              {getLocalizedString(profile.description, lang)}
             </Typography>
           </motion.div>
 
@@ -284,7 +291,7 @@ export default function Hero() {
                 size="large"
                 onClick={scrollToProjects}
               >
-                Ver credenciais
+                {t('hero.viewCredentials')}
               </Button>
 
               {profile.resume && (
@@ -297,7 +304,7 @@ export default function Hero() {
                   size="large"
                   startIcon={<FileDownloadOutlinedIcon />}
                 >
-                  Baixar currículo
+                  {t('hero.downloadResume')}
                 </Button>
               )}
 
@@ -360,7 +367,7 @@ export default function Hero() {
                 variant="caption"
                 sx={{ color: 'text.secondary', fontFamily: '"Fira Code", monospace' }}
               >
-                {'{'} location: "{profile.location}" {'}'}
+                {'{'} {t('hero.locationKey')}: "{getLocalizedString(profile.location, lang)}" {'}'}
               </Typography>
             </Box>
           </motion.div>
@@ -385,7 +392,7 @@ export default function Hero() {
           onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
         >
           <Typography variant="caption" sx={{ fontFamily: '"Fira Code", monospace', fontSize: '0.65rem', letterSpacing: '0.1em' }}>
-            SCROLL
+            {t('hero.scroll')}
           </Typography>
           <motion.div
             animate={{ y: [0, 6, 0] }}

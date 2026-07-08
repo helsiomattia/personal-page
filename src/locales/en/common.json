@@ -1,0 +1,68 @@
+{
+  "language": {
+    "label": "Select language"
+  },
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Credentials",
+    "skills": "Expertise",
+    "contact": "Contact",
+    "resume": "Resume",
+    "downloadResume": "Download resume",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "greeting": "Hi, I am",
+    "viewCredentials": "View credentials",
+    "downloadResume": "Download resume",
+    "scroll": "SCROLL",
+    "locationKey": "location"
+  },
+  "about": {
+    "overline": "01. about me",
+    "title": "Who I Am",
+    "subtitle": "A summary of my background in Salesforce, CRM and corporate processes.",
+    "expertise": "EXPERTISE"
+  },
+  "experience": {
+    "overline": "02. experience",
+    "title": "Professional Journey",
+    "subtitle": "Companies and challenges that shaped my technical and business perspective."
+  },
+  "projects": {
+    "overline": "03. credentials",
+    "title": "Education & Achievements",
+    "subtitle": "Certifications, academic background and complementary tracks that support my work in CRM and Salesforce.",
+    "repository": "Repository",
+    "viewDemo": "View demo",
+    "noResults": "No projects found for this filter.",
+    "viewMoreGithub": "See more on GitHub"
+  },
+  "skills": {
+    "overline": "04. expertise",
+    "title": "Specialties",
+    "subtitle": "Skills, methods and practices applied to CRM evolution, automation and operations."
+  },
+  "contact": {
+    "overline": "05. contact",
+    "title": "Let's Talk",
+    "subtitle": "Get in touch to talk about Salesforce, CRM, automation and business operations.",
+    "readyPrefix": "Ready to evolve",
+    "readyHighlight": "your CRM?",
+    "body": "If you want to talk about Salesforce, Sales Cloud, Service Cloud or process automation, my inbox is open.",
+    "sendMessage": "Send message",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "copyEmail": "Copy email",
+    "labels": {
+      "email": "E-mail",
+      "phone": "Phone",
+      "location": "Location"
+    }
+  },
+  "footer": {
+    "copyrightSuffix": "Salesforce CRM | Sales & Service Cloud"
+  }
+}

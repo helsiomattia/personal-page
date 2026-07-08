@@ -7,8 +7,6 @@ import {
   Container,
   Grid,
   IconButton,
-  Snackbar,
-  Alert,
   Tooltip,
   Typography,
   alpha,
@@ -22,66 +20,40 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import SectionTitle from '../ui/SectionTitle';
 import AnimatedBox from '../ui/AnimatedBox';
 import { profile } from '../../data/profile';
+import { getLocalizedString } from '../../utils/i18nHelper';
 
-const CONTACTS = [
-  {
-    icon: <EmailOutlinedIcon sx={{ fontSize: '1.5rem' }} />,
-    label: 'E-mail',
-    value: profile.email,
-    href: `mailto:${profile.email}`,
-    copyable: true,
-    color: '#FF6B6B',
-  },
-  {
-    icon: <LinkedInIcon sx={{ fontSize: '1.5rem' }} />,
-    label: 'LinkedIn',
-    value: profile.linkedinDisplay,
-    href: profile.linkedin,
-    copyable: false,
-    color: '#0A66C2',
-  },
-  {
-    icon: <GitHubIcon sx={{ fontSize: '1.5rem' }} />,
-    label: 'GitHub',
-    value: profile.githubDisplay,
-    href: profile.github,
-    copyable: false,
-    color: '#94A3B8',
-  },
-  {
-    icon: <WorkspacePremiumOutlinedIcon sx={{ fontSize: '1.5rem' }} />,
-    label: 'Trailblazer',
-    value: profile.trailblazerDisplay,
-    href: profile.trailblazer,
-    copyable: false,
-    color: '#00A1E0',
-  },
-  {
-    icon: <PhoneOutlinedIcon sx={{ fontSize: '1.5rem' }} />,
-    label: 'Telefone',
-    value: profile.phone,
-    href: `tel:+${profile.phone.replace(/\D/g, '')}`,
-    copyable: false,
-    color: '#10B981',
-  },
-  {
-    icon: <PlaceOutlinedIcon sx={{ fontSize: '1.5rem' }} />,
-    label: 'Localização',
-    value: profile.location,
-    href: null,
-    copyable: false,
-    color: '#FBBF24',
-  },
-];
-
-function ContactCard({ contact, index }) {
+function ContactCard({ contact, index, t }) {
   const [copied, setCopied] = useState(false);
   const isExternal = contact.href && !contact.href.startsWith('mailto') && !contact.href.startsWith('tel');
+  const isClickable = Boolean(contact.href);
 
-  const handleCopy = () => {
+  const openContact = () => {
+    if (!contact.href) return;
+
+    if (isExternal) {
+      window.open(contact.href, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    window.location.href = contact.href;
+  };
+
+  const handleKeyDown = (event) => {
+    if (!isClickable) return;
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openContact();
+    }
+  };
+
+  const handleCopy = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     navigator.clipboard.writeText(contact.value).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -94,23 +66,79 @@ function ContactCard({ contact, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+      style={{ width: '100%', height: '100%' }}
     >
       <Card
         sx={{
           p: 0,
+          height: '100%',
+          minHeight: 118,
           overflow: 'hidden',
-          cursor: contact.href ? 'pointer' : 'default',
-          '&:hover .contact-arrow': contact.href ? { opacity: 1, transform: 'translate(2px, -2px)' } : {},
+          cursor: isClickable ? 'pointer' : 'default',
+          position: 'relative',
+          bgcolor: 'rgba(255,255,255,0.86)',
+          border: '1px solid rgba(31,41,55,0.08)',
+          borderRadius: '18px',
+          boxShadow: '0 10px 30px rgba(31,41,55,0.055)',
+          backdropFilter: 'blur(8px)',
+          textDecoration: 'none',
+          transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            inset: 0,
+            background: `linear-gradient(135deg, ${alpha(contact.color, 0.1)} 0%, transparent 46%)`,
+            opacity: 0,
+            transition: 'opacity 0.3s ease',
+            pointerEvents: 'none',
+          },
+          '&:hover': {
+            transform: 'translateY(-4px)',
+            borderColor: alpha(contact.color, 0.32),
+            boxShadow: `0 18px 42px ${alpha(contact.color, 0.13)}`,
+            bgcolor: '#FFFFFF',
+          },
+          '&:hover::before': {
+            opacity: 1,
+          },
+          '&:hover .contact-icon': {
+            transform: 'scale(1.06)',
+            bgcolor: alpha(contact.color, 0.16),
+            borderColor: alpha(contact.color, 0.38),
+            boxShadow: `0 10px 24px ${alpha(contact.color, 0.16)}`,
+          },
+          '&:hover .contact-action': {
+            opacity: 1,
+            transform: 'translate(2px, -2px)',
+            color: contact.color,
+          },
+          '&:focus-visible': {
+            outline: `3px solid ${alpha(contact.color, 0.24)}`,
+            outlineOffset: 3,
+            borderColor: alpha(contact.color, 0.42),
+          },
         }}
-        component={contact.href ? 'a' : 'div'}
-        href={contact.href || undefined}
-        target={isExternal ? '_blank' : undefined}
-        rel={isExternal ? 'noopener noreferrer' : undefined}
-        style={{ textDecoration: 'none' }}
+        component="div"
+        onClick={isClickable ? openContact : undefined}
+        onKeyDown={handleKeyDown}
+        role={isClickable ? 'link' : undefined}
+        tabIndex={isClickable ? 0 : undefined}
+        aria-label={isClickable ? `${contact.label}: ${contact.value}` : undefined}
       >
-        <CardContent sx={{ p: 3, display: 'flex', alignItems: 'center', gap: 2.5 }}>
+        <CardContent
+          sx={{
+            position: 'relative',
+            zIndex: 1,
+            height: '100%',
+            p: { xs: 2.5, md: 3 },
+            display: 'flex',
+            alignItems: 'center',
+            gap: 2.25,
+          }}
+        >
           {/* Icon */}
           <Box
+            className="contact-icon"
             sx={{
               width: 52,
               height: 52,
@@ -122,7 +150,7 @@ function ContactCard({ contact, index }) {
               justifyContent: 'center',
               color: contact.color,
               flexShrink: 0,
-              transition: 'all 0.25s ease',
+              transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)',
             }}
           >
             {contact.icon}
@@ -140,6 +168,7 @@ function ContactCard({ contact, index }) {
                 fontSize: '0.72rem',
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
+                fontWeight: 700,
               }}
             >
               {contact.label}
@@ -148,7 +177,7 @@ function ContactCard({ contact, index }) {
               variant="body2"
               sx={{
                 color: 'text.primary',
-                fontWeight: 500,
+                fontWeight: 600,
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 whiteSpace: 'nowrap',
@@ -161,24 +190,39 @@ function ContactCard({ contact, index }) {
           {/* Action area */}
           <Box sx={{ flexShrink: 0 }}>
             {contact.copyable ? (
-              <Tooltip title={copied ? 'Copied!' : 'Copy'} arrow>
+              <Tooltip title={copied ? t('contact.copied') : t('contact.copy')} arrow>
                 <IconButton
+                  className="contact-action"
                   size="small"
-                  onClick={(e) => { e.preventDefault(); handleCopy(); }}
-                  aria-label="Copy email"
-                  sx={{ color: copied ? 'success.main' : 'text.secondary', '&:hover': { color: contact.color } }}
+                  onClick={handleCopy}
+                  aria-label={t('contact.copyEmail')}
+                  sx={{
+                    color: copied ? 'success.main' : 'text.secondary',
+                    bgcolor: copied ? alpha('#10B981', 0.1) : alpha(contact.color, 0.08),
+                    border: `1px solid ${copied ? alpha('#10B981', 0.24) : alpha(contact.color, 0.14)}`,
+                    opacity: copied ? 1 : 0.78,
+                    transition: 'all 0.25s ease',
+                    '&:hover': {
+                      color: contact.color,
+                      bgcolor: alpha(contact.color, 0.14),
+                    },
+                    '&:focus-visible': {
+                      outline: `2px solid ${alpha(contact.color, 0.35)}`,
+                      outlineOffset: 2,
+                    },
+                  }}
                 >
                   <ContentCopyIcon fontSize="small" />
                 </IconButton>
               </Tooltip>
             ) : contact.href ? (
               <ArrowOutwardIcon
-                className="contact-arrow"
+                className="contact-action"
                 sx={{
                   fontSize: '1.1rem',
                   color: 'text.secondary',
-                  opacity: 0,
-                  transition: 'all 0.2s ease',
+                  opacity: 0.55,
+                  transition: 'all 0.25s ease',
                 }}
               />
             ) : null}
@@ -190,6 +234,59 @@ function ContactCard({ contact, index }) {
 }
 
 export default function Contact() {
+  const { i18n, t } = useTranslation();
+  const lang = i18n.resolvedLanguage || 'pt';
+  const contacts = [
+    {
+      icon: <EmailOutlinedIcon sx={{ fontSize: '1.5rem' }} />,
+      label: t('contact.labels.email'),
+      value: profile.email,
+      href: `mailto:${profile.email}`,
+      copyable: true,
+      color: '#FF6B6B',
+    },
+    {
+      icon: <LinkedInIcon sx={{ fontSize: '1.5rem' }} />,
+      label: 'LinkedIn',
+      value: profile.linkedinDisplay,
+      href: profile.linkedin,
+      copyable: false,
+      color: '#0A66C2',
+    },
+    {
+      icon: <GitHubIcon sx={{ fontSize: '1.5rem' }} />,
+      label: 'GitHub',
+      value: profile.githubDisplay,
+      href: profile.github,
+      copyable: false,
+      color: '#94A3B8',
+    },
+    {
+      icon: <WorkspacePremiumOutlinedIcon sx={{ fontSize: '1.5rem' }} />,
+      label: 'Trailblazer',
+      value: profile.trailblazerDisplay,
+      href: profile.trailblazer,
+      copyable: false,
+      color: '#00A1E0',
+    },
+    {
+      icon: <PhoneOutlinedIcon sx={{ fontSize: '1.5rem' }} />,
+      label: t('contact.labels.phone'),
+      value: profile.phone,
+      href: `tel:+${profile.phone.replace(/\D/g, '')}`,
+      copyable: false,
+      color: '#10B981',
+    },
+    {
+      icon: <PlaceOutlinedIcon sx={{ fontSize: '1.5rem' }} />,
+      label: t('contact.labels.location'),
+      value: getLocalizedString(profile.location, lang),
+      href: null,
+      copyable: false,
+      color: '#FBBF24',
+    },
+  ];
+
   return (
     <Box
       id="contact"
@@ -220,9 +317,9 @@ export default function Contact() {
 
       <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
         <SectionTitle
-          overline="05. contato"
-          title="Vamos Conversar"
-          subtitle="Entre em contato para conversar sobre Salesforce, CRM, automação e operações de negócio."
+          overline={t('contact.overline')}
+          title={t('contact.title')}
+          subtitle={t('contact.subtitle')}
         />
 
         {/* Main CTA block */}
@@ -241,7 +338,7 @@ export default function Contact() {
               variant="h4"
               sx={{ fontWeight: 700, mb: 2, fontSize: { xs: '1.5rem', md: '2rem' } }}
             >
-              Pronto para evoluir{' '}
+              {t('contact.readyPrefix')}{' '}
               <Box
                 component="span"
                 sx={{
@@ -251,13 +348,12 @@ export default function Contact() {
                   backgroundClip: 'text',
                 }}
               >
-                seu CRM?
+                {t('contact.readyHighlight')}
               </Box>
             </Typography>
 
             <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, maxWidth: 480, mx: 'auto' }}>
-              Se você quer conversar sobre Salesforce, Sales Cloud, Service Cloud
-              ou automação de processos, minha caixa de entrada está aberta.
+              {t('contact.body')}
             </Typography>
 
             <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -269,7 +365,7 @@ export default function Contact() {
                 size="large"
                 startIcon={<EmailOutlinedIcon />}
               >
-                Enviar mensagem
+                {t('contact.sendMessage')}
               </Button>
               <Button
                 component="a"
@@ -289,9 +385,9 @@ export default function Contact() {
 
         {/* Contact cards grid */}
         <Grid container spacing={2}>
-          {CONTACTS.map((contact, index) => (
-            <Grid item xs={12} sm={6} key={contact.label}>
-              <ContactCard contact={contact} index={index} />
+          {contacts.map((contact, index) => (
+            <Grid item xs={12} sm={6} key={contact.label} sx={{ display: 'flex' }}>
+              <ContactCard contact={contact} index={index} t={t} />
             </Grid>
           ))}
         </Grid>

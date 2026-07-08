@@ -1,0 +1,74 @@
+Analise a seção “Quem Sou” do meu site e ajuste o layout para ficar mais profissional, bem enquadrado, visualmente equilibrado e com aparência premium.
+
+Objetivo:
+Deixar a tela mais bonita, mais simétrica, com melhor uso dos espaços, menos sensação de elementos soltos e com leitura mais confortável.
+
+Ajustes principais:
+
+1. Enquadramento geral da seção
+- Centralizar melhor todo o conteúdo dentro da largura da tela.
+- Usar um container máximo entre 1100px e 1200px.
+- Garantir que a seção tenha respiro superior e inferior, mas sem ficar alta demais.
+- Manter o conteúdo bem alinhado horizontalmente.
+- Evitar que o bloco da esquerda fique muito separado do texto da direita.
+
+2. Layout em duas colunas
+- Criar uma composição em duas colunas:
+  - Coluna esquerda: card de perfil, avatar, nome, cargo, localização e métricas.
+  - Coluna direita: texto de apresentação e expertise.
+- A coluna esquerda deve ter aparência de card premium, com fundo suave, borda sutil, sombra leve e cantos arredondados.
+- A coluna direita deve ficar alinhada verticalmente com o card da esquerda.
+- Ajustar o gap entre as colunas para algo visualmente equilibrado, aproximadamente 48px a 72px em desktop.
+
+3. Card de perfil
+- Transformar o bloco do avatar e métricas em um único card mais bem definido.
+- O avatar circular “HM” deve ficar centralizado e com tamanho proporcional, sem ocupar espaço excessivo.
+- Nome, cargo e localização devem ter espaçamento mais refinado.
+- As métricas devem ficar em grid 2x2, com cards menores, alinhados e do mesmo tamanho.
+- Reduzir um pouco o espaçamento entre os cards de métricas.
+- Deixar os números com destaque, mas sem parecer exagerado.
+
+4. Título e subtítulo
+- Manter o título “Quem Sou”, mas melhorar a hierarquia visual.
+- O marcador “// 01. SOBRE MIM” deve ficar mais discreto e elegante.
+- O subtítulo deve ficar centralizado e com largura máxima menor, para não parecer solto.
+- A linha decorativa abaixo do subtítulo deve ficar mais fina e elegante.
+
+5. Texto principal
+- Melhorar a largura das linhas para leitura confortável.
+- O texto não deve ficar muito espalhado horizontalmente.
+- Usar line-height agradável, algo entre 1.7 e 1.9.
+- Melhorar o espaçamento entre os parágrafos.
+- Manter tom profissional, mas visualmente leve.
+
+6. Tags de expertise
+- Organizar as tags em linhas mais equilibradas.
+- Deixar as tags com tamanho, padding e bordas consistentes.
+- Reduzir a quantidade de cores fortes.
+- Usar uma paleta mais leve e profissional, baseada em azul, cyan, verde suave e tons neutros.
+- Evitar aparência muito “colorida” ou infantil.
+- As tags devem parecer badges premium, não botões aleatórios.
+
+7. Responsividade
+- Em telas grandes: manter duas colunas.
+- Em tablet: reduzir gaps e tamanhos.
+- Em mobile: empilhar as colunas, com o card de perfil primeiro e o texto depois.
+- Garantir que nada fique espremido ou desalinhado em telas menores.
+
+8. Estilo visual desejado
+- Visual premium, limpo, moderno e consultivo.
+- Inspirado em portfólio profissional de consultor Salesforce/CRM.
+- Manter fundo claro, mas com contraste suficiente.
+- Evitar roxo, cores escuras demais ou elementos muito chamativos.
+- Usar sombras suaves, bordas finas e bastante consistência de espaçamento.
+
+9. Ajustes técnicos
+- Revisar classes Tailwind/CSS dessa seção.
+- Remover margens, paddings ou widths que estejam causando desalinhamento.
+- Usar grid/flex de forma consistente.
+- Garantir que o layout fique pixel-perfect no desktop.
+- Não alterar o conteúdo principal sem necessidade.
+- Não quebrar outras seções do site.
+
+Resultado esperado:
+A seção “Quem Sou” deve parecer uma página profissional de portfólio premium, com o bloco de perfil bem encaixado, texto bem alinhado, espaçamento refinado, tags organizadas e uma composição visual elegante.

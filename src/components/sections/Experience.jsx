@@ -10,12 +10,14 @@ import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import AnimatedBox from '../ui/AnimatedBox';
 import SectionTitle from '../ui/SectionTitle';
 import { experiences } from '../../data/experience';
+import { getLocalizedString, getLocalizedStringArray } from '../../utils/i18nHelper';
 
 /* ── Single timeline entry ─────────────────────────────── */
-function ExperienceCard({ exp, index }) {
+function ExperienceCard({ exp, index, lang }) {
   const isLeft = index % 2 === 0;
 
   return (
@@ -107,7 +109,7 @@ function ExperienceCard({ exp, index }) {
           >
             <Box>
               <Typography variant="h6" sx={{ fontWeight: 700, color: 'text.primary', mb: 0.25 }}>
-                {exp.role}
+                {getLocalizedString(exp.role, lang)}
               </Typography>
               <Typography
                 variant="body2"
@@ -119,7 +121,7 @@ function ExperienceCard({ exp, index }) {
 
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'flex-start', sm: 'flex-end' }, gap: 0.5 }}>
               <Chip
-                label={exp.period}
+                label={getLocalizedString(exp.period, lang)}
                 size="small"
                 icon={<WorkOutlineIcon style={{ fontSize: '0.75rem' }} />}
                 sx={{
@@ -134,7 +136,7 @@ function ExperienceCard({ exp, index }) {
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                 <PlaceOutlinedIcon sx={{ fontSize: '0.8rem', color: 'text.secondary' }} />
                 <Typography variant="caption" color="text.secondary">
-                  {exp.location} · {exp.type}
+                  {getLocalizedString(exp.location, lang)} · {getLocalizedString(exp.type, lang)}
                 </Typography>
               </Box>
             </Box>
@@ -142,12 +144,12 @@ function ExperienceCard({ exp, index }) {
 
           {/* Description */}
           <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2, lineHeight: 1.75 }}>
-            {exp.description}
+            {getLocalizedString(exp.description, lang)}
           </Typography>
 
           {/* Achievements */}
           <Box sx={{ mb: 2.5 }}>
-            {exp.achievements.map((item) => (
+            {getLocalizedStringArray(exp.achievements, lang).map((item) => (
               <Box key={item} sx={{ display: 'flex', gap: 1, alignItems: 'flex-start', mb: 1 }}>
                 <CheckCircleOutlineIcon sx={{ fontSize: '0.95rem', color: exp.color, mt: '3px', flexShrink: 0 }} />
                 <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.65 }}>
@@ -182,6 +184,9 @@ function ExperienceCard({ exp, index }) {
 
 /* ── Experience section ─────────────────────────────────── */
 export default function Experience() {
+  const { i18n, t } = useTranslation();
+  const lang = i18n.resolvedLanguage || 'pt';
+
   return (
     <Box
       id="experience"
@@ -193,14 +198,14 @@ export default function Experience() {
     >
       <Container maxWidth="md">
         <SectionTitle
-          overline="02. experiência"
-          title="Trajetória Profissional"
-          subtitle="Empresas e desafios que consolidaram minha visão técnica e de negócio."
+          overline={t('experience.overline')}
+          title={t('experience.title')}
+          subtitle={t('experience.subtitle')}
         />
 
         <Box>
           {experiences.map((exp, index) => (
-            <ExperienceCard key={exp.id} exp={exp} index={index} />
+            <ExperienceCard key={exp.id} exp={exp} index={index} lang={lang} />
           ))}
         </Box>
       </Container>

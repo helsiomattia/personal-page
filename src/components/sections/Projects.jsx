@@ -18,12 +18,17 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import ForkRightOutlinedIcon from '@mui/icons-material/ForkRightOutlined';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import SectionTitle from '../ui/SectionTitle';
 import { projects, projectFilters } from '../../data/projects';
 import { profile } from '../../data/profile';
+import { getLocalizedString, getLocalizedStringArray } from '../../utils/i18nHelper';
 
 /* ── Project card ──────────────────────────────────────── */
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, index, lang, t }) {
+  const status = getLocalizedString(project.status, lang);
+  const technologies = getLocalizedStringArray(project.technologies, lang);
+
   return (
     <motion.div
       layout
@@ -59,29 +64,29 @@ function ProjectCard({ project, index }) {
           {/* Top row: status + links */}
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
             <Chip
-              label={project.status}
+              label={status}
               size="small"
               sx={{
                 fontSize: '0.7rem',
                 height: 22,
                 bgcolor: alpha(
-                  project.status === 'In production'
+                  status === 'In production'
                     ? '#10B981'
-                    : project.status === 'Active'
+                    : status === 'Active'
                     ? '#3B82F6'
                     : '#94A3B8',
                   0.15,
                 ),
                 color:
-                  project.status === 'In production'
+                  status === 'In production'
                     ? '#10B981'
-                    : project.status === 'Active'
+                    : status === 'Active'
                     ? '#60A5FA'
                     : '#94A3B8',
                 border: `1px solid ${alpha(
-                  project.status === 'In production'
+                  status === 'In production'
                     ? '#10B981'
-                    : project.status === 'Active'
+                    : status === 'Active'
                     ? '#3B82F6'
                     : '#94A3B8',
                   0.3,
@@ -92,7 +97,7 @@ function ProjectCard({ project, index }) {
 
             <Box sx={{ display: 'flex', gap: 0.5 }}>
               {project.github && (
-                <Tooltip title="Repository" arrow>
+                <Tooltip title={t('projects.repository')} arrow>
                   <IconButton
                     component="a"
                     href={project.github}
@@ -110,7 +115,7 @@ function ProjectCard({ project, index }) {
                 </Tooltip>
               )}
               {project.demo && (
-                <Tooltip title="Ver demo" arrow>
+                <Tooltip title={t('projects.viewDemo')} arrow>
                   <IconButton
                     component="a"
                     href={project.demo}
@@ -132,7 +137,7 @@ function ProjectCard({ project, index }) {
 
           {/* Title */}
           <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, fontSize: '1rem', color: 'text.primary' }}>
-            {project.title}
+            {getLocalizedString(project.title, lang)}
           </Typography>
 
           {/* Description */}
@@ -140,12 +145,12 @@ function ProjectCard({ project, index }) {
             variant="body2"
             sx={{ color: 'text.secondary', mb: 2.5, flex: 1, lineHeight: 1.7, fontSize: '0.88rem' }}
           >
-            {project.description}
+            {getLocalizedString(project.description, lang)}
           </Typography>
 
           {/* Tech chips */}
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.7, mb: 2.5 }}>
-            {project.technologies.map((tech) => (
+            {technologies.map((tech) => (
               <Chip
                 key={tech}
                 label={tech}
@@ -189,6 +194,8 @@ function ProjectCard({ project, index }) {
 
 /* ── Projects section ──────────────────────────────────── */
 export default function Projects() {
+  const { i18n, t } = useTranslation();
+  const lang = i18n.resolvedLanguage || 'pt';
   const [activeFilter, setActiveFilter] = useState('all');
 
   const filtered = useMemo(() => {
@@ -207,9 +214,9 @@ export default function Projects() {
     >
       <Container maxWidth="lg">
         <SectionTitle
-          overline="03. credenciais"
-          title="Formação & Conquistas"
-          subtitle="Certificações, formação acadêmica e trilhas complementares que sustentam minha atuação em CRM e Salesforce."
+          overline={t('projects.overline')}
+          title={t('projects.title')}
+          subtitle={t('projects.subtitle')}
         />
 
         {/* Filter buttons */}
@@ -246,7 +253,7 @@ export default function Projects() {
                 }),
               }}
             >
-              {f.label}
+              {getLocalizedString(f.label, lang)}
             </Button>
           ))}
         </Box>
@@ -256,7 +263,7 @@ export default function Projects() {
           <AnimatePresence mode="wait">
             {filtered.map((project, index) => (
               <Grid item xs={12} sm={6} lg={4} key={project.id}>
-                <ProjectCard project={project} index={index} />
+                <ProjectCard project={project} index={index} lang={lang} t={t} />
               </Grid>
             ))}
           </AnimatePresence>
@@ -265,7 +272,7 @@ export default function Projects() {
         {filtered.length === 0 && (
           <Box sx={{ textAlign: 'center', py: 8 }}>
             <Typography color="text.secondary">
-              Nenhum projeto encontrado para este filtro.
+              {t('projects.noResults')}
             </Typography>
           </Box>
         )}
@@ -282,7 +289,7 @@ export default function Projects() {
             size="large"
             startIcon={<GitHubIcon />}
           >
-            Ver mais no GitHub
+            {t('projects.viewMoreGithub')}
           </Button>
         </Box>
       </Container>

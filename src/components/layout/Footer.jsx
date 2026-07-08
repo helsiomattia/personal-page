@@ -2,7 +2,9 @@ import { Box, Container, Divider, IconButton, Typography, Tooltip, alpha } from 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import { useTranslation } from 'react-i18next';
 import { profile } from '../../data/profile';
+import { getLocalizedString } from '../../utils/i18nHelper';
 
 const SOCIAL = [
   { icon: <GitHubIcon />, label: 'GitHub', href: profile.github },
@@ -11,14 +13,16 @@ const SOCIAL = [
 ];
 
 const NAV_LINKS = [
-  { label: 'Sobre', id: 'about' },
-  { label: 'Experiência', id: 'experience' },
-  { label: 'Credenciais', id: 'projects' },
-  { label: 'Expertise', id: 'skills' },
-  { label: 'Contato', id: 'contact' },
+  { labelKey: 'nav.about', id: 'about' },
+  { labelKey: 'nav.experience', id: 'experience' },
+  { labelKey: 'nav.projects', id: 'projects' },
+  { labelKey: 'nav.skills', id: 'skills' },
+  { labelKey: 'nav.contact', id: 'contact' },
 ];
 
 export default function Footer() {
+  const { i18n, t } = useTranslation();
+  const lang = i18n.resolvedLanguage || 'pt';
   const year = new Date().getFullYear();
 
   return (
@@ -63,7 +67,7 @@ export default function Footer() {
                 fontFamily: '"Fira Code", monospace',
               }}
             >
-              {profile.title}
+              {getLocalizedString(profile.title, lang)}
             </Typography>
           </Box>
 
@@ -86,7 +90,7 @@ export default function Footer() {
                   '&:hover': { color: 'primary.main' },
                 }}
               >
-                {link.label}
+                {t(link.labelKey)}
               </Typography>
             ))}
           </Box>
@@ -123,7 +127,7 @@ export default function Footer() {
           variant="caption"
           sx={{ display: 'block', textAlign: 'center', color: 'text.secondary' }}
         >
-          © {year} {profile.name} — Salesforce CRM | Sales & Service Cloud
+          © {year} {profile.name} — {t('footer.copyrightSuffix')}
         </Typography>
       </Container>
     </Box>

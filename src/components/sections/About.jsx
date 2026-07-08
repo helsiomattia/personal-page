@@ -5,16 +5,17 @@ import {
   Container,
   Grid,
   Paper,
-  Tooltip,
   Typography,
   alpha,
 } from '@mui/material';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import AnimatedBox from '../ui/AnimatedBox';
 import SectionTitle from '../ui/SectionTitle';
 import { profile } from '../../data/profile';
+import { getLocalizedString, getLocalizedStringArray } from '../../utils/i18nHelper';
 
 const itemVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -25,28 +26,80 @@ const itemVariants = {
   }),
 };
 
+const badgeColors = ['#1A8CD8', '#2BB3A3', '#10B981', '#64748B'];
+
 export default function About() {
+  const { i18n, t } = useTranslation();
+  const lang = i18n.resolvedLanguage || 'pt';
+
   return (
     <Box
       id="about"
       component="section"
       sx={{
-        py: { xs: 8, md: 10 },
-        background: 'linear-gradient(180deg, #EAF6FC 0%, #FFFFFF 100%)',
+        py: { xs: 7, md: 9 },
+        background:
+          'linear-gradient(180deg, #EAF6FC 0%, #F8FCFE 48%, #FFFFFF 100%)',
       }}
     >
-      <Container maxWidth="lg">
+      <Container
+        maxWidth={false}
+        sx={{
+          maxWidth: '1160px',
+          px: { xs: 2.5, sm: 3, md: 4 },
+        }}
+      >
         <SectionTitle
-          overline="01. sobre mim"
-          title="Quem Sou"
-          subtitle="Um resumo da minha trajetória em Salesforce, CRM e processos corporativos."
+          overline={t('about.overline')}
+          title={t('about.title')}
+          subtitle={t('about.subtitle')}
+          subtitleMaxWidth="560px"
+          dividerHeight={3}
+          dividerWidth={48}
         />
 
-        <Grid container spacing={{ xs: 4, md: 5 }} alignItems="flex-start">
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '360px minmax(0, 1fr)' },
+            gap: { xs: 3.5, md: 6, lg: 8 },
+            alignItems: 'stretch',
+            mx: 'auto',
+          }}
+        >
           {/* ── Left column: avatar + stats ── */}
-          <Grid item xs={12} md={4}>
-            <AnimatedBox delay={0.1}>
-              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
+          <AnimatedBox delay={0.1} style={{ height: '100%' }}>
+            <Paper
+              elevation={0}
+              sx={{
+                height: '100%',
+                p: { xs: 2.5, sm: 3, md: 3.25 },
+                borderRadius: '24px',
+                bgcolor: 'rgba(255,255,255,0.88)',
+                border: '1px solid rgba(26,140,216,0.14)',
+                boxShadow: '0 22px 60px rgba(31,41,55,0.08)',
+                backdropFilter: 'blur(10px)',
+                position: 'relative',
+                overflow: 'hidden',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  inset: 0,
+                  background:
+                    'radial-gradient(circle at 50% 0%, rgba(26,140,216,0.12), transparent 42%)',
+                  pointerEvents: 'none',
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  position: 'relative',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: 2.5,
+                }}
+              >
                 {/* Avatar */}
                 <Box sx={{ position: 'relative' }}>
                   <Box
@@ -62,15 +115,16 @@ export default function About() {
                     src={profile.avatar || undefined}
                     alt={profile.name}
                     sx={{
-                      width: { xs: 150, md: 180 },
-                      height: { xs: 150, md: 180 },
+                      width: { xs: 132, md: 148 },
+                      height: { xs: 132, md: 148 },
                       position: 'relative',
                       zIndex: 1,
                       border: '4px solid #FFFFFF',
-                      fontSize: '3.5rem',
+                      fontSize: { xs: '2.75rem', md: '3rem' },
                       fontWeight: 700,
                       background: 'linear-gradient(135deg, #FFFFFF 0%, #EAF6FC 100%)',
                       color: 'primary.main',
+                      boxShadow: '0 16px 40px rgba(26,140,216,0.16)',
                     }}
                   >
                     {profile.initials}
@@ -78,8 +132,8 @@ export default function About() {
                 </Box>
 
                 {/* Name + location */}
-                <Box sx={{ textAlign: 'center' }}>
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 0.5 }}>
+                <Box sx={{ textAlign: 'center', maxWidth: 300 }}>
+                  <Typography variant="h5" sx={{ fontWeight: 800, mb: 0.5, letterSpacing: '-0.02em' }}>
                     {profile.name}
                   </Typography>
                   <Typography
@@ -87,36 +141,54 @@ export default function About() {
                     sx={{
                       color: 'primary.main',
                       fontFamily: '"Fira Code", monospace',
-                      fontSize: '0.82rem',
-                      mb: 1,
+                      fontSize: { xs: '0.76rem', sm: '0.8rem' },
+                      lineHeight: 1.55,
+                      mb: 1.2,
                     }}
                   >
-                    {profile.title}
+                    {getLocalizedString(profile.title, lang)}
                   </Typography>
-                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0.5 }}>
-                    <LocationOnOutlinedIcon sx={{ fontSize: '0.9rem', color: 'text.secondary' }} />
-                    <Typography variant="caption" color="text.secondary">
-                      {profile.location}
+                  <Box
+                    sx={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: 0.65,
+                      px: 1.25,
+                      py: 0.55,
+                      borderRadius: '999px',
+                      bgcolor: alpha('#1A8CD8', 0.07),
+                      border: '1px solid rgba(26,140,216,0.12)',
+                    }}
+                  >
+                    <LocationOnOutlinedIcon sx={{ fontSize: '0.9rem', color: 'primary.main' }} />
+                    <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600 }}>
+                      {getLocalizedString(profile.location, lang)}
                     </Typography>
                   </Box>
                 </Box>
 
                 {/* Stats grid */}
-                <Grid container spacing={2} sx={{ mt: 0 }}>
-                  {profile.stats.map((stat) => (
-                    <Grid item xs={6} key={stat.label}>
+                <Grid container spacing={1.25} sx={{ mt: 0.5, width: '100%' }}>
+                  {profile.stats.map((stat, index) => (
+                    <Grid item xs={6} key={index}>
                       <Paper
                         elevation={0}
                         sx={{
-                          p: 2,
+                          minHeight: 94,
+                          p: { xs: 1.5, sm: 1.75 },
                           textAlign: 'center',
-                          bgcolor: alpha('#1A8CD8', 0.08),
-                          border: '1px solid rgba(26,140,216,0.18)',
-                          borderRadius: '12px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'center',
+                          bgcolor: 'rgba(246,250,253,0.86)',
+                          border: '1px solid rgba(31,41,55,0.08)',
+                          borderRadius: '16px',
                           transition: 'all 0.25s ease',
                           '&:hover': {
-                            bgcolor: alpha('#1A8CD8', 0.14),
-                            transform: 'scale(1.03)',
+                            bgcolor: alpha('#1A8CD8', 0.08),
+                            borderColor: alpha('#1A8CD8', 0.2),
+                            transform: 'translateY(-2px)',
                           },
                         }}
                       >
@@ -124,50 +196,78 @@ export default function About() {
                           variant="h5"
                           sx={{
                             fontWeight: 800,
+                            fontSize: { xs: '1.4rem', md: '1.55rem' },
                             background: 'linear-gradient(90deg, #1A8CD8, #2BB3A3)',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
                             backgroundClip: 'text',
-                            lineHeight: 1.2,
+                            lineHeight: 1.05,
+                            mb: 0.5,
                           }}
                         >
                           {stat.value}
                         </Typography>
-                        <Typography variant="caption" color="text.secondary" sx={{ lineHeight: 1.2 }}>
-                          {stat.label}
+                        <Typography
+                          variant="caption"
+                          color="text.secondary"
+                          sx={{ lineHeight: 1.25, fontSize: '0.7rem', fontWeight: 600 }}
+                        >
+                          {getLocalizedString(stat.label, lang)}
                         </Typography>
                       </Paper>
                     </Grid>
                   ))}
                 </Grid>
               </Box>
-            </AnimatedBox>
-          </Grid>
+            </Paper>
+          </AnimatedBox>
 
           {/* ── Right column: text + tech stack ── */}
-          <Grid item xs={12} md={8}>
-            <AnimatedBox delay={0.2}>
-              <Box sx={{ mb: 3 }}>
-                {profile.about.map((paragraph, i) => (
+          <Box sx={{ display: 'flex', alignItems: 'center', minWidth: 0 }}>
+            <Box sx={{ width: '100%' }}>
+              <AnimatedBox delay={0.2}>
+              <Paper
+                elevation={0}
+                sx={{
+                  p: { xs: 2.75, sm: 3.5, md: 4 },
+                  mb: 3,
+                  borderRadius: '22px',
+                  bgcolor: 'rgba(255,255,255,0.72)',
+                  border: '1px solid rgba(31,41,55,0.07)',
+                  boxShadow: '0 18px 50px rgba(31,41,55,0.055)',
+                }}
+              >
+                {getLocalizedStringArray(profile.about, lang).map((paragraph, i) => (
                   <Typography
                     key={i}
                     variant="body1"
                     sx={{
                       color: 'text.secondary',
-                      mb: 1.5,
+                      maxWidth: '680px',
+                      mb: 2,
                       '&:last-of-type': { mb: 0 },
-                      lineHeight: 1.85,
+                      lineHeight: 1.82,
+                      fontSize: { xs: '0.98rem', md: '1.04rem' },
                     }}
                   >
                     {paragraph}
                   </Typography>
                 ))}
-              </Box>
-            </AnimatedBox>
+              </Paper>
+              </AnimatedBox>
 
-            {/* Tech stack */}
-            <AnimatedBox delay={0.3}>
-              <Box>
+              {/* Tech stack */}
+              <AnimatedBox delay={0.3}>
+              <Paper
+                elevation={0}
+                sx={{
+                  p: { xs: 2.5, sm: 3, md: 3.25 },
+                  borderRadius: '22px',
+                  bgcolor: 'rgba(255,255,255,0.68)',
+                  border: '1px solid rgba(26,140,216,0.1)',
+                  boxShadow: '0 16px 44px rgba(31,41,55,0.045)',
+                }}
+              >
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                   <CodeOutlinedIcon sx={{ color: 'primary.main', fontSize: '1.1rem' }} />
                   <Typography
@@ -178,11 +278,11 @@ export default function About() {
                       letterSpacing: '0.12em',
                     }}
                   >
-                    EXPERTISE
+                    {t('about.expertise')}
                   </Typography>
                 </Box>
 
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.2 }}>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                   {profile.techStack.map((tech, i) => (
                     <motion.div
                       key={tech.name}
@@ -195,18 +295,21 @@ export default function About() {
                       <Chip
                         label={tech.name}
                         sx={{
-                          bgcolor: alpha(tech.color, 0.1),
-                          border: `1px solid ${alpha(tech.color, 0.35)}`,
-                          color: tech.color,
+                          bgcolor: alpha(badgeColors[i % badgeColors.length], 0.08),
+                          border: `1px solid ${alpha(badgeColors[i % badgeColors.length], 0.18)}`,
+                          color: alpha(badgeColors[i % badgeColors.length], 0.95),
                           fontFamily: '"Fira Code", monospace',
-                          fontSize: '0.78rem',
-                          height: 30,
+                          fontSize: '0.74rem',
+                          fontWeight: 600,
+                          height: 32,
+                          px: 0.75,
+                          borderRadius: '999px',
                           transition: 'all 0.2s ease',
                           '&:hover': {
-                            bgcolor: alpha(tech.color, 0.2),
-                            borderColor: tech.color,
+                            bgcolor: alpha(badgeColors[i % badgeColors.length], 0.14),
+                            borderColor: alpha(badgeColors[i % badgeColors.length], 0.3),
                             transform: 'translateY(-2px)',
-                            boxShadow: `0 4px 14px ${alpha(tech.color, 0.25)}`,
+                            boxShadow: `0 8px 20px ${alpha(badgeColors[i % badgeColors.length], 0.12)}`,
                           },
                           cursor: 'default',
                         }}
@@ -214,10 +317,11 @@ export default function About() {
                     </motion.div>
                   ))}
                 </Box>
-              </Box>
-            </AnimatedBox>
-          </Grid>
-        </Grid>
+              </Paper>
+              </AnimatedBox>
+            </Box>
+          </Box>
+        </Box>
       </Container>
     </Box>
   );

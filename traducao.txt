@@ -1,0 +1,132 @@
+Como a traducao do site funciona
+
+O projeto e um site React com Vite e usa a biblioteca react-i18next para internacionalizacao. A configuracao principal fica em src/i18n.ts.
+
+1. Inicializacao do i18n
+
+O arquivo src/main.tsx importa src/i18n.ts antes de renderizar o App. Isso faz o i18next ficar disponivel para os componentes React.
+
+Em src/i18n.ts sao registrados tres idiomas:
+
+- pt: portugues
+- en: ingles
+- es: espanhol
+
+Cada idioma usa o namespace common, carregado destes arquivos:
+
+- src/locales/pt/common.json
+- src/locales/en/common.json
+- src/locales/es/common.json
+
+O idioma de fallback e pt. Entao, se o i18next nao encontrar ou nao conseguir resolver um idioma, o site usa portugues como base.
+
+O projeto tambem usa i18next-browser-languagedetector. Ele ajuda a detectar o idioma pelo navegador e/ou pela escolha salva localmente pelo usuario.
+
+2. Textos fixos da interface
+
+Textos fixos, como menu, botoes, titulos, labels e paginas institucionais, ficam nos arquivos common.json.
+
+Nos componentes, esses textos sao lidos com o hook useTranslation:
+
+const { t } = useTranslation();
+
+Exemplo de uso:
+
+t('nav.home')
+t('home.subtitle')
+t('results.title')
+
+Isso busca a mesma chave no common.json do idioma ativo. Por isso, quando uma chave nova for criada, ela deve existir nos tres arquivos: pt, en e es.
+
+Alguns textos sao arrays ou objetos dentro do JSON. Nesses casos o codigo usa returnObjects:
+
+t('home.heroParagraphs', { returnObjects: true })
+
+Tambem existe uso de Trans, por exemplo na HomePage, quando uma traducao precisa renderizar uma parte do texto com componente React, como um span estilizado.
+
+3. Troca de idioma pelo usuario
+
+A troca manual de idioma fica no componente src/components/LanguageSwitcher.tsx.
+
+Esse componente chama:
+
+i18n.changeLanguage('pt')
+i18n.changeLanguage('en')
+i18n.changeLanguage('es')
+
+Quando o idioma muda, os componentes que usam useTranslation sao atualizados automaticamente. O componente tambem compara i18n.resolvedLanguage para destacar o idioma ativo.
+
+4. Textos vindos dos dados das trilhas
+
+Nem todos os textos ficam nos arquivos common.json. O conteudo das trilhas, competencias, guias, perguntas e descricoes fica em arquivos de dados TypeScript.
+
+Exemplos:
+
+- src/data/competencies/admin.ts
+- src/data/competencies/developer.ts
+- src/data/competencies/architect.ts
+- src/data/competencies/consultant.ts
+- src/data/guideData.ts
+
+Nesses arquivos, muitos campos usam o formato LocString:
+
+{
+  pt: "Texto em portugues",
+  en: "Text in English",
+  es: "Texto en espanol"
+}
+
+O tipo fica em src/data/competencies/types.ts:
+
+LocString = { pt: string; en: string; es: string }
+LocStringArray = { pt: string[]; en: string[]; es: string[] }
+
+Para renderizar esses textos, o projeto usa o helper src/utils/i18nHelper.ts.
+
+Funcoes principais:
+
+- getLocalizedString(...): retorna uma string no idioma ativo.
+- getLocalizedStringArray(...): retorna uma lista de strings no idioma ativo.
+
+Exemplo de uso:
+
+const { i18n } = useTranslation();
+const lang = i18n.resolvedLanguage || 'pt';
+getLocalizedString(category.title, lang)
+
+Se o idioma nao for en ou es, o helper usa pt como padrao. Se faltar uma traducao especifica, ele tenta voltar para pt.
+
+5. PDF de resultado
+
+O PDF gerado na finalizacao tem traducoes proprias dentro de src/components/FinishPanel.tsx, no objeto pdfCopy.
+
+Esse objeto tambem esta separado por pt, en e es. Quando alterar textos do PDF, a manutencao deve ser feita nesse objeto, alem de conferir os textos vindos das competencias com getLocalizedString.
+
+6. Como adicionar ou alterar uma traducao
+
+Para texto fixo da interface:
+
+1. Adicione ou altere a chave em src/locales/pt/common.json.
+2. Repita a mesma chave em src/locales/en/common.json.
+3. Repita a mesma chave em src/locales/es/common.json.
+4. No componente React, use t('caminho.da.chave').
+
+Para texto de trilha, competencia ou guia:
+
+1. Encontre o arquivo em src/data/competencies ou src/data/guideData.ts.
+2. Preencha o objeto com pt, en e es.
+3. Na tela, renderize com getLocalizedString ou getLocalizedStringArray.
+
+Para texto do PDF:
+
+1. Edite o objeto pdfCopy em src/components/FinishPanel.tsx.
+2. Mantenha as mesmas chaves em pt, en e es.
+
+7. Cuidados importantes
+
+- Nao edite a pasta dist para traducao. Ela e resultado do build e pode ser sobrescrita.
+- Mantenha a mesma estrutura de chaves nos tres common.json.
+- Evite deixar texto fixo direto no JSX quando ele deve mudar com o idioma.
+- Para conteudo com pt/en/es embutido nos dados, use o helper getLocalizedString em vez de acessar .pt, .en ou .es diretamente.
+- O HTML principal index.html ainda declara lang="pt-BR" e contem metadados estaticos em portugues. A internacionalizacao principal acontece dentro do app React.
+- As paginas em legacy-pages sao HTMLs antigos em pt-BR e nao fazem parte do fluxo principal de react-i18next.

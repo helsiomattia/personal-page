@@ -15,8 +15,10 @@ import CloudIcon from '@mui/icons-material/Cloud';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import BuildIcon from '@mui/icons-material/Build';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import SectionTitle from '../ui/SectionTitle';
 import { skillCategories } from '../../data/skills';
+import { getLocalizedString, getLocalizedStringArray } from '../../utils/i18nHelper';
 
 const ICON_MAP = {
   Web: WebIcon,
@@ -36,8 +38,9 @@ const chipVariants = {
   }),
 };
 
-function SkillCard({ category, cardIndex }) {
+function SkillCard({ category, cardIndex, lang }) {
   const IconComponent = ICON_MAP[category.icon] || BuildIcon;
+  const skills = getLocalizedStringArray(category.skills, lang);
 
   return (
     <motion.div
@@ -84,13 +87,13 @@ function SkillCard({ category, cardIndex }) {
                 color: 'text.primary',
               }}
             >
-              {category.title}
+              {getLocalizedString(category.title, lang)}
             </Typography>
           </Box>
 
           {/* Skills */}
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.9 }}>
-            {category.skills.map((skill, i) => (
+            {skills.map((skill, i) => (
               <motion.div key={skill} custom={i} variants={chipVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <Chip
                   label={skill}
@@ -122,6 +125,9 @@ function SkillCard({ category, cardIndex }) {
 }
 
 export default function Skills() {
+  const { i18n, t } = useTranslation();
+  const lang = i18n.resolvedLanguage || 'pt';
+
   return (
     <Box
       id="skills"
@@ -133,15 +139,15 @@ export default function Skills() {
     >
       <Container maxWidth="lg">
         <SectionTitle
-          overline="04. expertise"
-          title="Especialidades"
-          subtitle="Competências, métodos e práticas aplicadas à evolução de CRM, automação e operações."
+          overline={t('skills.overline')}
+          title={t('skills.title')}
+          subtitle={t('skills.subtitle')}
         />
 
         <Grid container spacing={3}>
           {skillCategories.map((category, index) => (
             <Grid item xs={12} sm={6} lg={4} key={category.id}>
-              <SkillCard category={category} cardIndex={index} />
+              <SkillCard category={category} cardIndex={index} lang={lang} />
             </Grid>
           ))}
         </Grid>
