@@ -1,0 +1,66 @@
+Preciso ajustar o comportamento de navegação/scroll entre as seções do meu site.
+
+Problema:
+Quando clico nos itens do menu ou navego entre as seções, a posição final do scroll não fica bem encaixada. Às vezes aparece um pedaço da seção anterior no topo ou parte da próxima seção, deixando a navegação visualmente desalinhada.
+
+Exemplo:
+Ao clicar em “Experiência”, quero que a tela mostre a seção “Trajetória Profissional” de forma limpa e centralizada/encaixada, sem ficar aparecendo pedaço da seção anterior acima.
+O mesmo deve acontecer com:
+- Sobre
+- Experiência
+- Credenciais
+- Expertise
+- Contato
+
+Objetivo:
+Cada clique no menu deve levar o usuário para a seção correta com espaçamento consistente, considerando o header fixo/sticky. A seção acessada deve aparecer “certinha” na viewport, sem cortes estranhos, sem sobras grandes e sem conteúdo da seção anterior invadindo a tela.
+
+Verifique e ajuste principalmente:
+
+1. Header fixo/sticky
+- Calcule corretamente a altura do header.
+- O scroll deve compensar essa altura.
+- Nenhuma seção deve ficar escondida atrás do header.
+
+2. Scroll por âncoras
+- Ajustar `scroll-margin-top` em cada seção.
+- Ajustar `scroll-padding-top` no `html` ou container principal, se necessário.
+- Garantir que todos os links do menu apontem para os IDs corretos.
+- Evitar offsets diferentes entre seções.
+
+3. Espaçamento vertical das seções
+- Padronizar `padding-top` e `padding-bottom` das seções.
+- Evitar espaços excessivos entre uma seção e outra.
+- Evitar que o final de uma seção fique aparecendo quando navego para a próxima.
+- Manter ritmo visual elegante e consistente.
+
+4. Altura mínima das seções
+- Verificar se existe `min-height: 100vh`, `100dvh` ou valores fixos causando desalinhamento.
+- Ajustar para que cada seção tenha boa presença visual, mas sem forçar espaços vazios desnecessários.
+- A Hero pode ter comportamento próprio, mas as demais seções precisam navegar corretamente.
+
+5. Desktop e mobile
+- Validar o comportamento no desktop.
+- Validar no mobile.
+- No mobile, considerar altura diferente do header/menu.
+- Garantir que o clique no menu leve exatamente para a seção correta em todas as resoluções.
+
+6. Scroll suave
+- Manter o scroll suave, mas sem causar posição final errada.
+- Se houver animações ou efeitos de entrada, garantir que não alterem a posição final da seção.
+- Verificar se `scroll-behavior`, `transform`, `motion`, `animation` ou wrappers estão interferindo.
+
+Critério de aceite:
+1. Ao clicar em “Sobre”, a seção “Quem Sou” aparece corretamente posicionada.
+2. Ao clicar em “Experiência”, aparece apenas a seção “Trajetória Profissional” bem encaixada, sem sobra da seção anterior.
+3. Ao clicar em “Credenciais”, aparece a seção “Formação & Conquistas” corretamente.
+4. Ao clicar em “Expertise”, aparece a seção “Especialidades” corretamente.
+5. Ao clicar em “Contato”, aparece a seção “Vamos Conversar” corretamente.
+6. O header não cobre nenhum título.
+7. O espaçamento entre seções fica consistente e profissional.
+8. O comportamento funciona em Chrome, Firefox, desktop e mobile.
+9. Não alterar o design geral, cores, fontes ou conteúdo.
+10. Corrigir apenas o espaçamento, offsets e comportamento de navegação entre seções.
+
+Importante:
+Quero que ao navegar pelo menu a experiência pareça polida e intencional, como um site profissional. Cada seção precisa entrar na tela de forma limpa, sem parecer que o scroll parou no lugar errado.

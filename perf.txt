@@ -1,0 +1,85 @@
+Preciso que você faça uma revisão técnica completa da arquitetura, implementação, performance e responsividade do meu projeto.
+
+Contexto:
+Este é um site pessoal/portfolio rodando localmente em `localhost:5173/personal-page/`. Quero garantir que o projeto esteja bem estruturado, performático, responsivo e seguindo boas práticas da stack utilizada.
+
+Objetivo principal:
+Analise toda a arquitetura geral do projeto e verifique se ele está implementado seguindo as melhores práticas da linguagem, framework e bibliotecas que estão sendo usadas.
+
+Tarefas:
+
+1. Arquitetura e estrutura do projeto
+- Identifique qual stack está sendo usada.
+- Avalie se a organização de pastas, componentes, páginas, estilos, assets e arquivos de configuração está adequada.
+- Verifique se existe duplicação desnecessária de código.
+- Verifique se os componentes estão bem separados por responsabilidade.
+- Verifique se existe lógica visual, lógica de estado e conteúdo misturados de forma inadequada.
+- Avalie se os nomes de arquivos, componentes, variáveis e funções estão claros e consistentes.
+- Caso encontre problemas, refatore aplicando boas práticas.
+
+2. Boas práticas da stack
+- Verifique se o projeto segue boas práticas do framework usado.
+- Verifique se hooks, componentes, props, estados, estilos e renderizações estão sendo usados corretamente.
+- Verifique se existem warnings, erros no console ou problemas de lint/build.
+- Verifique se o projeto está preparado para manutenção e evolução.
+- Caso encontre más práticas, corrija diretamente.
+
+3. Performance geral do site
+- Analise a performance de carregamento e renderização.
+- Verifique imagens, fontes, animações, bundles, imports, CSS, JavaScript e assets.
+- Otimize o que estiver causando lentidão.
+- Verifique se existem animações ou efeitos visuais pesados.
+- Verifique se há re-renderizações desnecessárias.
+- Verifique se há imports grandes ou dependências que podem ser reduzidas.
+- Garanta que o site continue visualmente igual, mas mais leve e rápido.
+
+4. Diferença entre Chrome e Firefox
+Percebi que no Chrome o site abre muito rápido, mas no Firefox parece mais lento.
+
+Investigue especificamente:
+- diferenças de renderização entre Chrome e Firefox;
+- uso de CSS, blur, backdrop-filter, shadows, gradients, animações ou efeitos que possam pesar mais no Firefox;
+- carregamento de fontes;
+- scroll behavior;
+- layout shifts;
+- animações de entrada;
+- uso de `transform`, `filter`, `backdrop-filter`, `box-shadow`, `position: sticky/fixed` ou efeitos semelhantes.
+
+Se algum efeito estiver prejudicando o Firefox, otimize sem perder a identidade visual do site.
+
+5. Responsividade desktop e mobile
+- Valide o layout no desktop.
+- Valide o layout em telas menores, tablet e mobile.
+- Corrija quebras visuais, espaçamentos ruins, textos cortados, menus quebrados, botões desalinhados e seções com overflow horizontal.
+- Garanta que header, hero, seções, cards, botões de idioma e navegação funcionem bem no mobile.
+- Verifique se a experiência de scroll está correta em todas as resoluções.
+
+6. Qualidade visual
+- Preserve o design atual, cores, fontes, estilo visual e identidade do site.
+- Não quero redesenhar o site inteiro.
+- Faça apenas ajustes técnicos, estruturais, responsivos e de performance.
+- Caso algum ajuste visual seja necessário para corrigir responsividade ou performance, mantenha o mais próximo possível do design atual.
+
+7. Validações obrigatórias
+Antes de finalizar, rode e valide:
+- build do projeto;
+- lint, caso exista;
+- TypeScript/typecheck, caso exista;
+- teste manual em desktop;
+- teste manual em mobile/responsivo;
+- teste comparando Chrome e Firefox, se possível.
+
+Critérios de aceite:
+1. O projeto precisa continuar com o mesmo design geral.
+2. O site precisa carregar rápido no Chrome e no Firefox.
+3. O layout precisa estar correto no desktop.
+4. O layout precisa estar correto no mobile.
+5. A arquitetura precisa estar mais limpa e seguindo boas práticas.
+6. Não pode haver erros no console.
+7. Não pode haver quebra visual entre seções.
+8. Não pode haver overflow horizontal no mobile.
+9. O build precisa finalizar com sucesso.
+10. Qualquer alteração feita deve ser explicada de forma resumida no final.
+
+Importante:
+Não faça mudanças desnecessárias no conteúdo textual do site. Foque em arquitetura, boas práticas, performance, responsividade e estabilidade visual.

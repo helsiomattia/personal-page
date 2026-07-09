@@ -11,19 +11,16 @@ import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import AnimatedBox from '../ui/AnimatedBox';
 import SectionTitle from '../ui/SectionTitle';
 import { experiences } from '../../data/experience';
 import { getLocalizedString, getLocalizedStringArray } from '../../utils/i18nHelper';
 
 /* ── Single timeline entry ─────────────────────────────── */
 function ExperienceCard({ exp, index, lang }) {
-  const isLeft = index % 2 === 0;
-
   return (
     <motion.div
-      initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.65, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
     >
@@ -59,7 +56,7 @@ function ExperienceCard({ exp, index, lang }) {
               fontWeight: 800,
               color: exp.color,
               flexShrink: 0,
-              boxShadow: `0 0 20px ${alpha(exp.color, 0.2)}`,
+              boxShadow: `0 0 16px ${alpha(exp.color, 0.16)}`,
               zIndex: 1,
             }}
           >
@@ -85,13 +82,14 @@ function ExperienceCard({ exp, index, lang }) {
             flex: 1,
             p: { xs: 2.5, md: 3.5 },
             mb: 2,
-            bgcolor: '#FFFFFF',
-            border: '1px solid rgba(31,41,55,0.08)',
+            bgcolor: '#F8FBFE',
+            border: '1px solid rgba(15,37,55,0.12)',
             borderRadius: '16px',
+            boxShadow: exp.current ? `0 14px 34px ${alpha(exp.color, 0.1)}` : '0 8px 24px rgba(15,37,55,0.045)',
             transition: 'all 0.3s ease',
             '&:hover': {
               border: `1px solid ${alpha(exp.color, 0.4)}`,
-              boxShadow: `0 12px 40px ${alpha(exp.color, 0.1)}`,
+              boxShadow: `0 10px 30px ${alpha(exp.color, 0.09)}`,
               transform: 'translateY(-2px)',
             },
           }}
@@ -131,6 +129,11 @@ function ExperienceCard({ exp, index, lang }) {
                   fontFamily: '"Fira Code", monospace',
                   fontSize: '0.72rem',
                   height: 24,
+                  maxWidth: '100%',
+                  '& .MuiChip-label': {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  },
                 }}
               />
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
@@ -167,11 +170,16 @@ function ExperienceCard({ exp, index, lang }) {
                 label={tech}
                 size="small"
                 sx={{
-                  bgcolor: 'rgba(26,140,216,0.06)',
-                  border: '1px solid rgba(26,140,216,0.14)',
+                  bgcolor: 'rgba(11,92,171,0.08)',
+                  border: '1px solid rgba(11,92,171,0.18)',
                   color: 'text.secondary',
                   fontFamily: '"Fira Code", monospace',
                   fontSize: '0.72rem',
+                  maxWidth: '100%',
+                  '& .MuiChip-label': {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  },
                 }}
               />
             ))}
@@ -193,7 +201,7 @@ export default function Experience() {
       component="section"
       sx={{
         py: { xs: 8, md: 10 },
-        background: 'linear-gradient(180deg, #FFFFFF 0%, #F6FAFD 100%)',
+        background: 'linear-gradient(180deg, #F3F8FC 0%, #EAF2F8 100%)',
       }}
     >
       <Container maxWidth="md">

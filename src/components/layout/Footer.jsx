@@ -1,134 +1,70 @@
-import { Box, Container, Divider, IconButton, Typography, Tooltip, alpha } from '@mui/material';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import { useTranslation } from 'react-i18next';
+import { Box, Container, Typography } from '@mui/material';
 import { profile } from '../../data/profile';
-import { getLocalizedString } from '../../utils/i18nHelper';
-
-const SOCIAL = [
-  { icon: <GitHubIcon />, label: 'GitHub', href: profile.github },
-  { icon: <LinkedInIcon />, label: 'LinkedIn', href: profile.linkedin },
-  { icon: <EmailOutlinedIcon />, label: 'E-mail', href: `mailto:${profile.email}` },
-];
-
-const NAV_LINKS = [
-  { labelKey: 'nav.about', id: 'about' },
-  { labelKey: 'nav.experience', id: 'experience' },
-  { labelKey: 'nav.projects', id: 'projects' },
-  { labelKey: 'nav.skills', id: 'skills' },
-  { labelKey: 'nav.contact', id: 'contact' },
-];
 
 export default function Footer() {
-  const { i18n, t } = useTranslation();
-  const lang = i18n.resolvedLanguage || 'pt';
   const year = new Date().getFullYear();
 
   return (
     <Box
       component="footer"
       sx={{
-        bgcolor: '#FFFFFF',
-        borderTop: '1px solid rgba(31,41,55,0.08)',
-        py: 5,
+        bgcolor: 'rgba(248,251,254,0.94)',
+        borderTop: '1px solid rgba(15,37,55,0.12)',
+        py: { xs: 2.5, md: 3 },
       }}
     >
       <Container maxWidth="lg">
         <Box
           sx={{
             display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            alignItems: { xs: 'center', md: 'center' },
+            flexDirection: { xs: 'column', sm: 'row' },
+            alignItems: 'center',
             justifyContent: 'space-between',
-            gap: 3,
-            mb: 3,
+            gap: 1.5,
           }}
         >
-          {/* Brand */}
-          <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Box
+              aria-hidden="true"
+              sx={{
+                width: 28,
+                height: 28,
+                borderRadius: '8px',
+                background: 'linear-gradient(135deg, #0B5CAB 0%, #159DB3 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#F8FBFE',
+                fontFamily: '"Fira Code", monospace',
+                fontSize: '0.7rem',
+                fontWeight: 700,
+              }}
+            >
+              {profile.initials}
+            </Box>
             <Typography
-              variant="h6"
+              variant="body2"
               sx={{
                 fontWeight: 700,
-                background: 'linear-gradient(90deg, #1A8CD8 0%, #2BB3A3 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                mb: 0.5,
+                color: 'text.primary',
+                letterSpacing: '-0.01em',
               }}
             >
               {profile.name}
             </Typography>
-            <Typography
-              variant="caption"
-              sx={{
-                color: 'text.secondary',
-                fontFamily: '"Fira Code", monospace',
-              }}
-            >
-              {getLocalizedString(profile.title, lang)}
-            </Typography>
           </Box>
 
-          {/* Nav links */}
-          <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: 'center' }}>
-            {NAV_LINKS.map((link) => (
-              <Typography
-                key={link.id}
-                component="a"
-                onClick={() => {
-                  const el = document.getElementById(link.id);
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
-                sx={{
-                  color: 'text.secondary',
-                  fontSize: '0.85rem',
-                  cursor: 'pointer',
-                  textDecoration: 'none',
-                  transition: 'color 0.2s',
-                  '&:hover': { color: 'primary.main' },
-                }}
-              >
-                {t(link.labelKey)}
-              </Typography>
-            ))}
-          </Box>
-
-          {/* Social Icons */}
-          <Box sx={{ display: 'flex', gap: 0.5 }}>
-            {SOCIAL.map((s) => (
-              <Tooltip key={s.label} title={s.label} arrow>
-                <IconButton
-                  component="a"
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  size="small"
-                  aria-label={s.label}
-                  sx={{
-                    color: 'text.secondary',
-                    '&:hover': {
-                      color: 'primary.main',
-                      bgcolor: alpha('#1A8CD8', 0.08),
-                    },
-                  }}
-                >
-                  {s.icon}
-                </IconButton>
-              </Tooltip>
-            ))}
-          </Box>
+          <Typography
+            variant="caption"
+            sx={{
+              color: 'text.secondary',
+              fontFamily: '"Fira Code", monospace',
+              fontSize: '0.72rem',
+            }}
+          >
+            © {year}
+          </Typography>
         </Box>
-
-        <Divider sx={{ mb: 3 }} />
-
-        <Typography
-          variant="caption"
-          sx={{ display: 'block', textAlign: 'center', color: 'text.secondary' }}
-        >
-          © {year} {profile.name} — {t('footer.copyrightSuffix')}
-        </Typography>
       </Container>
     </Box>
   );

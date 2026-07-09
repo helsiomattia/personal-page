@@ -19,20 +19,20 @@ export default function SectionTitle({
 }) {
   return (
     <AnimatedBox>
-      <Box sx={{ textAlign: align, mb: { xs: 4, md: 5 } }}>
+      <Box sx={{ textAlign: align, mb: { xs: 4.5, md: 5.5 } }}>
         {overline && (
           <Typography
             component="span"
             sx={{
               display: 'block',
-              mb: 1,
+              mb: 1.25,
               color: 'primary.main',
               fontFamily: '"Fira Code", monospace',
-              fontSize: '0.74rem',
-              letterSpacing: '0.15em',
+              fontSize: { xs: '0.68rem', md: '0.72rem' },
+              letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              fontWeight: 600,
-              opacity: 0.86,
+              fontWeight: 700,
+              opacity: 0.9,
             }}
           >
             // {overline}
@@ -44,6 +44,8 @@ export default function SectionTitle({
           sx={{
             color: 'text.primary',
             fontSize: { xs: '1.9rem', sm: '2.25rem', md: '2.75rem' },
+            lineHeight: 1.12,
+            letterSpacing: '-0.035em',
             mb: subtitle ? 2 : 0,
           }}
         >
@@ -58,6 +60,8 @@ export default function SectionTitle({
               mx: align === 'center' ? 'auto' : 0,
               color: 'text.secondary',
               mt: 1,
+              lineHeight: 1.75,
+              fontSize: { xs: '0.98rem', md: '1.04rem' },
             }}
           >
             {subtitle}
@@ -72,7 +76,7 @@ export default function SectionTitle({
             width: dividerWidth,
             height: dividerHeight,
             borderRadius: 2,
-            background: 'linear-gradient(90deg, #1A8CD8 0%, #2BB3A3 100%)',
+            background: 'linear-gradient(90deg, #0B5CAB 0%, #159DB3 100%)',
           }}
         />
       </Box>

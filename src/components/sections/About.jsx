@@ -10,23 +10,13 @@ import {
 } from '@mui/material';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined';
-import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import AnimatedBox from '../ui/AnimatedBox';
 import SectionTitle from '../ui/SectionTitle';
 import { profile } from '../../data/profile';
 import { getLocalizedString, getLocalizedStringArray } from '../../utils/i18nHelper';
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
-
-const badgeColors = ['#1A8CD8', '#2BB3A3', '#10B981', '#64748B'];
+const badgeColors = ['#0B5CAB', '#159DB3', '#0B8F61', '#4A6478'];
 
 export default function About() {
   const { i18n, t } = useTranslation();
@@ -37,9 +27,9 @@ export default function About() {
       id="about"
       component="section"
       sx={{
-        py: { xs: 7, md: 9 },
+        py: { xs: 8, md: 10 },
         background:
-          'linear-gradient(180deg, #EAF6FC 0%, #F8FCFE 48%, #FFFFFF 100%)',
+          'linear-gradient(180deg, #DCEAF4 0%, #EAF2F8 48%, #F3F8FC 100%)',
       }}
     >
       <Container
@@ -75,10 +65,14 @@ export default function About() {
                 height: '100%',
                 p: { xs: 2.5, sm: 3, md: 3.25 },
                 borderRadius: '24px',
-                bgcolor: 'rgba(255,255,255,0.88)',
-                border: '1px solid rgba(26,140,216,0.14)',
-                boxShadow: '0 22px 60px rgba(31,41,55,0.08)',
-                backdropFilter: 'blur(10px)',
+                bgcolor: 'rgba(248,251,254,0.9)',
+                border: '1px solid rgba(11,92,171,0.18)',
+                boxShadow: '0 16px 44px rgba(15,37,55,0.08)',
+                backdropFilter: 'blur(6px)',
+                WebkitBackdropFilter: 'blur(6px)',
+                '@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)))': {
+                  bgcolor: 'rgba(248,251,254,0.98)',
+                },
                 position: 'relative',
                 overflow: 'hidden',
                 '&::before': {
@@ -86,7 +80,7 @@ export default function About() {
                   position: 'absolute',
                   inset: 0,
                   background:
-                    'radial-gradient(circle at 50% 0%, rgba(26,140,216,0.12), transparent 42%)',
+                    'radial-gradient(circle at 50% 0%, rgba(11,92,171,0.16), transparent 42%)',
                   pointerEvents: 'none',
                 },
               }}
@@ -107,7 +101,7 @@ export default function About() {
                       position: 'absolute',
                       inset: -3,
                       borderRadius: '50%',
-                      background: 'linear-gradient(135deg, #1A8CD8 0%, #2BB3A3 100%)',
+                      background: 'linear-gradient(135deg, #0B5CAB 0%, #159DB3 100%)',
                       zIndex: 0,
                     }}
                   />
@@ -119,12 +113,12 @@ export default function About() {
                       height: { xs: 132, md: 148 },
                       position: 'relative',
                       zIndex: 1,
-                      border: '4px solid #FFFFFF',
+                      border: '4px solid #F8FBFE',
                       fontSize: { xs: '2.75rem', md: '3rem' },
                       fontWeight: 700,
-                      background: 'linear-gradient(135deg, #FFFFFF 0%, #EAF6FC 100%)',
+                      background: 'linear-gradient(135deg, #F8FBFE 0%, #DCEAF4 100%)',
                       color: 'primary.main',
-                      boxShadow: '0 16px 40px rgba(26,140,216,0.16)',
+                      boxShadow: '0 12px 32px rgba(11,92,171,0.16)',
                     }}
                   >
                     {profile.initials}
@@ -157,8 +151,8 @@ export default function About() {
                       px: 1.25,
                       py: 0.55,
                       borderRadius: '999px',
-                      bgcolor: alpha('#1A8CD8', 0.07),
-                      border: '1px solid rgba(26,140,216,0.12)',
+                      bgcolor: alpha('#0B5CAB', 0.1),
+                      border: '1px solid rgba(11,92,171,0.18)',
                     }}
                   >
                     <LocationOnOutlinedIcon sx={{ fontSize: '0.9rem', color: 'primary.main' }} />
@@ -181,13 +175,13 @@ export default function About() {
                           display: 'flex',
                           flexDirection: 'column',
                           justifyContent: 'center',
-                          bgcolor: 'rgba(246,250,253,0.86)',
-                          border: '1px solid rgba(31,41,55,0.08)',
+                          bgcolor: 'rgba(234,242,248,0.82)',
+                          border: '1px solid rgba(15,37,55,0.1)',
                           borderRadius: '16px',
                           transition: 'all 0.25s ease',
                           '&:hover': {
-                            bgcolor: alpha('#1A8CD8', 0.08),
-                            borderColor: alpha('#1A8CD8', 0.2),
+                            bgcolor: alpha('#0B5CAB', 0.1),
+                            borderColor: alpha('#0B5CAB', 0.24),
                             transform: 'translateY(-2px)',
                           },
                         }}
@@ -197,7 +191,7 @@ export default function About() {
                           sx={{
                             fontWeight: 800,
                             fontSize: { xs: '1.4rem', md: '1.55rem' },
-                            background: 'linear-gradient(90deg, #1A8CD8, #2BB3A3)',
+                            background: 'linear-gradient(90deg, #0B5CAB, #159DB3)',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
                             backgroundClip: 'text',
@@ -232,9 +226,9 @@ export default function About() {
                   p: { xs: 2.75, sm: 3.5, md: 4 },
                   mb: 3,
                   borderRadius: '22px',
-                  bgcolor: 'rgba(255,255,255,0.72)',
-                  border: '1px solid rgba(31,41,55,0.07)',
-                  boxShadow: '0 18px 50px rgba(31,41,55,0.055)',
+                  bgcolor: 'rgba(248,251,254,0.78)',
+                  border: '1px solid rgba(15,37,55,0.1)',
+                  boxShadow: '0 14px 38px rgba(15,37,55,0.06)',
                 }}
               >
                 {getLocalizedStringArray(profile.about, lang).map((paragraph, i) => (
@@ -263,9 +257,9 @@ export default function About() {
                 sx={{
                   p: { xs: 2.5, sm: 3, md: 3.25 },
                   borderRadius: '22px',
-                  bgcolor: 'rgba(255,255,255,0.68)',
-                  border: '1px solid rgba(26,140,216,0.1)',
-                  boxShadow: '0 16px 44px rgba(31,41,55,0.045)',
+                  bgcolor: 'rgba(248,251,254,0.74)',
+                  border: '1px solid rgba(11,92,171,0.16)',
+                  boxShadow: '0 12px 34px rgba(15,37,55,0.055)',
                 }}
               >
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
@@ -284,37 +278,34 @@ export default function About() {
 
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                   {profile.techStack.map((tech, i) => (
-                    <motion.div
+                    <Chip
                       key={tech.name}
-                      custom={i}
-                      variants={itemVariants}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                    >
-                      <Chip
-                        label={tech.name}
-                        sx={{
-                          bgcolor: alpha(badgeColors[i % badgeColors.length], 0.08),
-                          border: `1px solid ${alpha(badgeColors[i % badgeColors.length], 0.18)}`,
-                          color: alpha(badgeColors[i % badgeColors.length], 0.95),
-                          fontFamily: '"Fira Code", monospace',
-                          fontSize: '0.74rem',
-                          fontWeight: 600,
-                          height: 32,
-                          px: 0.75,
-                          borderRadius: '999px',
-                          transition: 'all 0.2s ease',
-                          '&:hover': {
-                            bgcolor: alpha(badgeColors[i % badgeColors.length], 0.14),
-                            borderColor: alpha(badgeColors[i % badgeColors.length], 0.3),
-                            transform: 'translateY(-2px)',
-                            boxShadow: `0 8px 20px ${alpha(badgeColors[i % badgeColors.length], 0.12)}`,
-                          },
-                          cursor: 'default',
-                        }}
-                      />
-                    </motion.div>
+                      label={tech.name}
+                      sx={{
+                        maxWidth: '100%',
+                        bgcolor: alpha(badgeColors[i % badgeColors.length], 0.08),
+                        border: `1px solid ${alpha(badgeColors[i % badgeColors.length], 0.18)}`,
+                        color: alpha(badgeColors[i % badgeColors.length], 0.95),
+                        fontFamily: '"Fira Code", monospace',
+                        fontSize: '0.74rem',
+                        fontWeight: 600,
+                        height: 32,
+                        px: 0.75,
+                        borderRadius: '999px',
+                        transition: 'all 0.2s ease',
+                        '& .MuiChip-label': {
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                        },
+                        '&:hover': {
+                          bgcolor: alpha(badgeColors[i % badgeColors.length], 0.14),
+                          borderColor: alpha(badgeColors[i % badgeColors.length], 0.3),
+                          transform: 'translateY(-2px)',
+                          boxShadow: `0 6px 16px ${alpha(badgeColors[i % badgeColors.length], 0.1)}`,
+                        },
+                        cursor: 'default',
+                      }}
+                    />
                   ))}
                 </Box>
               </Paper>

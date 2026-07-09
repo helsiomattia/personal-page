@@ -1,0 +1,117 @@
+Quero que você faça uma revisão completa de UI/UX do meu site pessoal/portfolio, atuando como um Product Designer Sênior, UX Designer e UI Engineer especialista em interfaces premium.
+
+Objetivo:
+Elevar o projeto para um nível sênior/especialista, deixando o site mais bonito, moderno, profissional, memorável e confiável, sem perder a identidade atual.
+
+Contexto:
+O site é um portfolio pessoal focado em Salesforce, CRM, automação, arquitetura de soluções e carreira profissional. Ele precisa transmitir senioridade, domínio técnico, clareza de negócio e confiança para recrutadores, líderes técnicos, consultorias e empresas.
+
+Analise e melhore os seguintes pontos:
+
+1. Primeira impressão e posicionamento
+- A Hero section transmite claramente quem eu sou e o valor que entrego?
+- O título principal está forte o suficiente?
+- O subtítulo está genérico ou realmente vende minha especialidade?
+- O visitante entende em até 5 segundos minha senioridade, foco e diferencial?
+- A página passa imagem de especialista ou parece apenas um portfolio comum?
+- Sugira e aplique melhorias no texto visual, hierarquia e composição.
+
+2. Hierarquia visual
+- Verifique se títulos, subtítulos, descrições, badges, cards e CTAs têm pesos visuais corretos.
+- Ajuste espaçamentos, tamanhos de fonte, contraste, alinhamento e ritmo visual.
+- Garanta que o olhar do usuário siga uma sequência natural.
+- Evite excesso de elementos competindo entre si.
+- Melhore a escaneabilidade da página.
+
+3. Design visual premium
+- Avalie se o visual está moderno, sofisticado e consistente.
+- Melhore cards, sombras, bordas, gradientes, espaçamentos, hover states e microinterações.
+- Preserve a identidade atual, mas refine para parecer mais premium.
+- Evite aparência genérica de template.
+- O resultado deve parecer feito por alguém sênior, não por um layout básico.
+
+4. UX e navegação
+- Verifique se a navegação é intuitiva.
+- Valide se as seções estão em uma ordem lógica para convencer o visitante.
+- Garanta que o usuário entenda rapidamente minha trajetória, experiência, credenciais, expertise e formas de contato.
+- Melhore âncoras, scroll, transições e feedback visual.
+- Garanta que o site tenha fluidez sem parecer pesado.
+
+5. Conteúdo e storytelling
+- Avalie se o conteúdo conta uma história profissional forte.
+- Organize a narrativa para mostrar:
+  - quem sou;
+  - que problemas resolvo;
+  - onde tenho experiência;
+  - quais tecnologias/domínios domino;
+  - quais resultados entreguei;
+  - por que sou confiável.
+- Reescreva trechos que estiverem genéricos demais.
+- Não invente experiências, mas melhore a forma de apresentar o que já existe.
+
+6. Conversão profissional
+- Verifique se existem CTAs claros, como:
+  - ver experiência;
+  - acessar LinkedIn;
+  - entrar em contato;
+  - baixar currículo;
+  - ver credenciais;
+  - conhecer projetos.
+- Sugira a melhor posição para esses CTAs.
+- O site precisa ajudar recrutadores e líderes a entenderem rapidamente meu valor.
+
+7. Consistência visual
+- Padronize espaçamentos, tamanhos, bordas, ícones, badges, cores e componentes.
+- Garanta que todos os cards e seções pareçam parte do mesmo sistema visual.
+- Evite estilos diferentes demais entre seções.
+- Crie uma sensação de design system mesmo que o projeto seja pequeno.
+
+8. Microinterações e refinamento
+- Avalie hover states, animações, transições, scroll behavior e feedback visual.
+- Melhore microinterações de forma sutil e elegante.
+- Não use animações exageradas.
+- O site deve parecer moderno, fluido e profissional.
+
+9. Mobile UX
+- Revise a experiência mobile como prioridade.
+- Verifique se o Hero funciona bem no mobile.
+- Valide menu, botões, cards, textos, badges, seções e espaçamentos.
+- Corrija qualquer excesso de altura, texto quebrado, botão pequeno, card apertado ou scroll ruim.
+- A versão mobile precisa parecer tão bem pensada quanto a desktop.
+
+10. Acessibilidade e legibilidade
+- Verifique contraste de cores.
+- Garanta textos legíveis em desktop e mobile.
+- Valide tamanhos de fonte, espaçamento entre linhas e estados de foco.
+- Evite elementos importantes com baixo contraste.
+- Mantenha o site bonito, mas também acessível.
+
+11. Comparação com referências de alto nível
+Use como referência visual sites pessoais e portfolios premium de:
+- consultores de tecnologia;
+- architects;
+- product designers;
+- founders;
+- especialistas em SaaS/CRM;
+- profissionais tech sênior.
+
+Não copie nenhum layout, mas use o padrão de qualidade como referência.
+
+12. Restrições
+- Não alterar a identidade principal do site sem necessidade.
+- Não mudar cores, fontes ou estilo geral de forma radical.
+- Não inventar dados profissionais.
+- Não transformar o site em algo exagerado ou cheio de efeitos.
+- Priorizar elegância, clareza, confiança e senioridade.
+
+Critérios de aceite:
+1. O site deve parecer mais premium e profissional.
+2. A primeira dobra deve comunicar valor com clareza.
+3. A navegação deve ficar mais intuitiva.
+4. As seções devem ter melhor ritmo visual.
+5. O mobile deve ficar excelente.
+6. O design deve ficar consistente.
+7. O site deve transmitir senioridade em Salesforce, CRM e arquitetura de soluções.
+8. Nenhuma mudança deve prejudicar performance.
+9. O resultado final deve manter minha identidade, mas elevar muito o acabamento.
+10. Ao final, explique resumidamente quais melhorias de UI/UX foram aplicadas e por quê.

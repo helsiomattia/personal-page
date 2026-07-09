@@ -1,0 +1,106 @@
+Quero ajustar a identidade visual do meu site porque atualmente ele está muito branco, com azul muito fraco, e isso está causando desconforto visual/dor nos olhos.
+
+Objetivo:
+Refinar a paleta de cores do site para ficar mais próxima da sensação visual do site oficial da Salesforce Brasil:
+https://www.salesforce.com/br/
+
+Não quero copiar o site da Salesforce, mas quero usar uma direção visual parecida:
+- mais contraste;
+- azul mais forte e confiável;
+- fundo menos branco puro;
+- visual mais confortável para leitura;
+- sensação mais corporativa, moderna e premium;
+- cores com mais presença, sem ficar pesado.
+
+Tarefas:
+
+1. Revisar a paleta atual
+- Identifique todos os tons atuais de branco, azul, ciano, cinza, bordas, cards, badges e backgrounds.
+- Verifique quais cores estão claras demais ou com baixo contraste.
+- Avalie onde o excesso de branco está deixando a tela cansativa.
+
+2. Criar uma nova paleta inspirada na Salesforce
+Use como referência visual:
+- azul Salesforce mais forte;
+- tons de azul profundo;
+- azul/ciano para destaques;
+- fundos em off-white, azul muito claro ou cinza azulado;
+- contraste melhor entre texto, cards e fundo;
+- componentes com mais presença visual.
+
+Importante:
+Não copiar exatamente a identidade da Salesforce. Apenas aproximar a sensação visual: confiável, tecnológica, corporativa, limpa e premium.
+
+3. Melhorar conforto visual
+- Evitar branco puro excessivo.
+- Reduzir áreas muito claras que cansam os olhos.
+- Melhorar contraste dos textos.
+- Ajustar backgrounds das seções.
+- Melhorar contraste dos cards.
+- Ajustar bordas, sombras e badges para ficarem mais visíveis.
+- Garantir que o site continue elegante e leve.
+
+4. Aplicar a nova paleta no site inteiro
+Atualize de forma consistente:
+- background geral;
+- Hero section;
+- header;
+- cards;
+- botões;
+- badges;
+- links;
+- títulos;
+- divisores;
+- seções;
+- timeline;
+- cards de experiência;
+- cards de credenciais;
+- cards de expertise;
+- seção de contato.
+
+5. Manter identidade profissional
+O site deve continuar transmitindo:
+- Salesforce;
+- CRM;
+- tecnologia;
+- senioridade;
+- consultoria;
+- confiança;
+- clareza;
+- sofisticação.
+
+6. Acessibilidade
+- Validar contraste entre texto e fundo.
+- Evitar azul claro demais em textos pequenos.
+- Garantir boa leitura em desktop e mobile.
+- Garantir que botões e links tenham contraste suficiente.
+- Evitar combinações que causem fadiga visual.
+
+7. Desktop e mobile
+- Validar a nova paleta no desktop.
+- Validar no mobile.
+- Verificar se os fundos, cards e contrastes continuam bons em telas menores.
+- Garantir que a nova paleta não prejudique performance ou legibilidade.
+
+8. Restrições
+- Não mudar o conteúdo textual.
+- Não redesenhar tudo do zero.
+- Não transformar o site em uma cópia da Salesforce.
+- Não usar branco puro como background principal em grandes áreas.
+- Não usar azul muito claro para textos importantes.
+- Preservar o layout atual, mas melhorar muito a percepção visual.
+
+Critérios de aceite:
+1. O site fica menos branco e menos cansativo para os olhos.
+2. O azul fica mais forte, profissional e próximo da sensação visual da Salesforce.
+3. O contraste geral melhora.
+4. Os cards ficam mais bem definidos.
+5. A leitura fica mais confortável.
+6. O visual fica mais premium e corporativo.
+7. A identidade Salesforce/CRM fica mais evidente.
+8. A experiência continua boa em desktop e mobile.
+9. Não há perda de performance.
+10. No final, explique quais cores foram alteradas e por quê.
+
+Importante:
+Quero que o resultado pareça um site pessoal premium de um especialista Salesforce, com uma paleta mais madura, confortável e inspirada no universo visual da Salesforce, mas sem copiar diretamente a marca.

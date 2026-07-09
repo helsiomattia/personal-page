@@ -1,0 +1,30 @@
+Preciso corrigir um pequeno bug visual na home do meu site.
+
+Contexto:
+Na primeira vez que a página carrega, a seção Hero fica correta: todo o conteúdo principal aparece centralizado e sem mostrar a próxima seção.
+
+Problema:
+Quando clico no botão/âncora “SCROLL” para descer até a seção “Sobre mim” e depois volto para o topo da página, fica aparecendo um pedaço da próxima seção no final da tela, especificamente:
+
+“// 01. SOBRE MIM”
+“Quem Sou”
+
+Isso não deveria aparecer quando estou no topo. O topo precisa voltar exatamente para o estado inicial da primeira imagem, mostrando só a seção Hero.
+
+O que quero:
+Ajuste o comportamento visual/scroll para que, ao voltar ao topo da página, a seção Hero ocupe corretamente a altura da tela e não deixe vazar nenhum conteúdo da próxima seção.
+
+Verifique principalmente:
+- altura da seção Hero (`height`, `min-height`, `100vh`, `100dvh`);
+- margens/paddings entre a Hero e a seção “Sobre mim”;
+- comportamento do scroll anchor;
+- `scroll-margin-top` / `scroll-padding-top`;
+- impacto do header fixo/sticky na posição final do scroll;
+- se existe alguma animação, transform ou translate alterando o layout depois do scroll.
+
+Critério de aceite:
+1. Ao carregar a página pela primeira vez, a Hero continua igual.
+2. Ao clicar em “SCROLL”, desce normalmente para “Sobre mim”.
+3. Ao voltar para o topo, não aparece nenhum pedaço da seção “Sobre mim”.
+4. A experiência precisa ficar igual em desktop e responsiva em telas menores.
+5. Não alterar o design geral, cores, fontes ou conteúdo — apenas corrigir o espaçamento/comportamento visual.

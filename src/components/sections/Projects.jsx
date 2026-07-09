@@ -21,7 +21,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import SectionTitle from '../ui/SectionTitle';
 import { projects, projectFilters } from '../../data/projects';
-import { profile } from '../../data/profile';
 import { getLocalizedString, getLocalizedStringArray } from '../../utils/i18nHelper';
 
 /* ── Project card ──────────────────────────────────────── */
@@ -46,8 +45,15 @@ function ProjectCard({ project, index, lang, t }) {
           position: 'relative',
           overflow: 'hidden',
           cursor: 'default',
+          bgcolor: 'rgba(248,251,254,0.94)',
+          borderColor: project.featured ? alpha('#0B5CAB', 0.26) : 'rgba(15,37,55,0.12)',
+          boxShadow: project.featured ? '0 14px 34px rgba(11,92,171,0.1)' : undefined,
           '&:hover .project-overlay': { opacity: 1 },
           '&:hover .project-gradient': { opacity: 0.9 },
+          '&:hover': {
+            borderColor: alpha('#0B5CAB', 0.36),
+            boxShadow: '0 16px 38px rgba(11,92,171,0.12)',
+          },
         }}
       >
         {/* Gradient header */}
@@ -71,24 +77,24 @@ function ProjectCard({ project, index, lang, t }) {
                 height: 22,
                 bgcolor: alpha(
                   status === 'In production'
-                    ? '#10B981'
+                    ? '#0B8F61'
                     : status === 'Active'
-                    ? '#3B82F6'
-                    : '#94A3B8',
+                    ? '#0B78B6'
+                    : '#6B8194',
                   0.15,
                 ),
                 color:
                   status === 'In production'
-                    ? '#10B981'
+                    ? '#0B8F61'
                     : status === 'Active'
-                    ? '#60A5FA'
-                    : '#94A3B8',
+                    ? '#0B78B6'
+                    : '#5C7183',
                 border: `1px solid ${alpha(
                   status === 'In production'
-                    ? '#10B981'
+                    ? '#0B8F61'
                     : status === 'Active'
-                    ? '#3B82F6'
-                    : '#94A3B8',
+                    ? '#0B78B6'
+                    : '#6B8194',
                   0.3,
                 )}`,
                 fontFamily: '"Fira Code", monospace',
@@ -107,7 +113,7 @@ function ProjectCard({ project, index, lang, t }) {
                     aria-label="GitHub"
                     sx={{
                       color: 'text.secondary',
-                      '&:hover': { color: 'primary.main' },
+                      '&:hover': { color: 'primary.main', bgcolor: alpha('#0B5CAB', 0.1) },
                     }}
                   >
                     <GitHubIcon fontSize="small" />
@@ -125,7 +131,7 @@ function ProjectCard({ project, index, lang, t }) {
                     aria-label="Demo"
                     sx={{
                       color: 'text.secondary',
-                      '&:hover': { color: 'secondary.main' },
+                      '&:hover': { color: 'secondary.main', bgcolor: alpha('#159DB3', 0.1) },
                     }}
                   >
                     <OpenInNewIcon fontSize="small" />
@@ -156,21 +162,26 @@ function ProjectCard({ project, index, lang, t }) {
                 label={tech}
                 size="small"
                 sx={{
-                  bgcolor: 'rgba(26,140,216,0.07)',
-                  border: '1px solid rgba(26,140,216,0.18)',
-                  color: 'primary.light',
+                  bgcolor: 'rgba(11,92,171,0.08)',
+                  border: '1px solid rgba(11,92,171,0.2)',
+                  color: 'primary.main',
                   fontFamily: '"Fira Code", monospace',
                   fontSize: '0.7rem',
+                  maxWidth: '100%',
+                  '& .MuiChip-label': {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  },
                 }}
               />
             ))}
           </Box>
 
           {(project.stars !== null || project.forks !== null) && (
-            <Stack direction="row" spacing={2} sx={{ pt: 1.5, borderTop: '1px solid rgba(31,41,55,0.08)' }}>
+            <Stack direction="row" spacing={2} sx={{ pt: 1.5, borderTop: '1px solid rgba(15,37,55,0.12)' }}>
               {project.stars !== null && (
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                  <StarOutlineIcon sx={{ fontSize: '0.9rem', color: '#FBBF24' }} />
+                  <StarOutlineIcon sx={{ fontSize: '0.9rem', color: '#B7791F' }} />
                   <Typography variant="caption" sx={{ color: 'text.secondary', fontFamily: '"Fira Code", monospace' }}>
                     {project.stars}
                   </Typography>
@@ -209,7 +220,7 @@ export default function Projects() {
       component="section"
       sx={{
         py: { xs: 8, md: 10 },
-        background: 'linear-gradient(180deg, #F6FAFD 0%, #FFFFFF 100%)',
+        background: 'linear-gradient(180deg, #EAF2F8 0%, #F3F8FC 100%)',
       }}
     >
       <Container maxWidth="lg">
@@ -243,12 +254,12 @@ export default function Projects() {
                 px: 2,
                 minWidth: 0,
                 ...(activeFilter !== f.value && {
-                  borderColor: 'rgba(31,41,55,0.14)',
+                  borderColor: 'rgba(15,37,55,0.18)',
                   color: 'text.secondary',
                   '&:hover': {
                     borderColor: 'primary.main',
                     color: 'primary.main',
-                    bgcolor: alpha('#1A8CD8', 0.08),
+                    bgcolor: alpha('#0B5CAB', 0.1),
                   },
                 }),
               }}
@@ -276,22 +287,6 @@ export default function Projects() {
             </Typography>
           </Box>
         )}
-
-        {/* GitHub CTA */}
-        <Box sx={{ textAlign: 'center', mt: 6 }}>
-          <Button
-            component="a"
-            href={profile.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="outlined"
-            color="primary"
-            size="large"
-            startIcon={<GitHubIcon />}
-          >
-            {t('projects.viewMoreGithub')}
-          </Button>
-        </Box>
       </Container>
     </Box>
   );

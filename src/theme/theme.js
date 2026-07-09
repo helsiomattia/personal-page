@@ -1,40 +1,41 @@
 import { createTheme, alpha } from '@mui/material/styles';
 
-const PRIMARY = '#1A8CD8';
-const SECONDARY = '#2BB3A3';
-const BG = '#F6FAFD';
-const SURFACE = '#FFFFFF';
-const SURFACE_2 = '#F1F7FB';
+const PRIMARY = '#0B5CAB';
+const SECONDARY = '#159DB3';
+const BG = '#EAF2F8';
+const SURFACE = '#F8FBFE';
+const SURFACE_2 = '#DCEAF4';
+const TEXT = '#0F2537';
 
 const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
       main: PRIMARY,
-      light: '#66B7E8',
-      dark: '#0E5F9A',
-      contrastText: '#FFFFFF',
+      light: '#2E94D8',
+      dark: '#073E75',
+      contrastText: '#F8FBFE',
     },
     secondary: {
       main: SECONDARY,
-      light: '#76D7CC',
-      dark: '#16877B',
-      contrastText: '#FFFFFF',
+      light: '#4EC5D5',
+      dark: '#087482',
+      contrastText: '#F8FBFE',
     },
     background: {
       default: BG,
       paper: SURFACE,
     },
     text: {
-      primary: '#1F2937',
-      secondary: '#5B6B7C',
-      disabled: '#9AA7B5',
+      primary: TEXT,
+      secondary: '#40586D',
+      disabled: '#7C91A4',
     },
-    divider: 'rgba(31, 41, 55, 0.1)',
-    success: { main: '#10B981' },
-    error: { main: '#FF6B6B' },
-    warning: { main: '#FBBF24' },
-    info: { main: '#38BDF8' },
+    divider: 'rgba(15, 37, 55, 0.14)',
+    success: { main: '#0B8F61' },
+    error: { main: '#D94A5F' },
+    warning: { main: '#B7791F' },
+    info: { main: '#0B78B6' },
   },
   typography: {
     fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
@@ -65,8 +66,8 @@ const theme = createTheme({
         },
         '*::-webkit-scrollbar-thumb:hover': { background: PRIMARY },
         '::selection': {
-          backgroundColor: alpha(PRIMARY, 0.18),
-          color: '#1F2937',
+          backgroundColor: alpha(PRIMARY, 0.2),
+          color: TEXT,
         },
       },
     },
@@ -115,7 +116,7 @@ const theme = createTheme({
         root: {
           backgroundImage: 'none',
           backgroundColor: SURFACE,
-          border: `1px solid ${alpha('#1F2937', 0.08)}`,
+          border: `1px solid ${alpha(TEXT, 0.12)}`,
           borderRadius: '16px',
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
@@ -147,7 +148,7 @@ const theme = createTheme({
     },
     MuiDivider: {
       styleOverrides: {
-        root: { borderColor: 'rgba(31,41,55,0.1)' },
+        root: { borderColor: alpha(TEXT, 0.14) },
       },
     },
     MuiTooltip: {

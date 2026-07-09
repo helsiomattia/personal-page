@@ -17,41 +17,41 @@
     "greeting": "Hi, I am",
     "viewCredentials": "View credentials",
     "downloadResume": "Download resume",
-    "scroll": "SCROLL",
+    "scroll": "VIEW JOURNEY",
     "locationKey": "location"
   },
   "about": {
     "overline": "01. about me",
     "title": "Who I Am",
-    "subtitle": "A summary of my background in Salesforce, CRM and corporate processes.",
+    "subtitle": "How I connect technology, processes and business context to evolve CRM operations with Salesforce.",
     "expertise": "EXPERTISE"
   },
   "experience": {
     "overline": "02. experience",
     "title": "Professional Journey",
-    "subtitle": "Companies and challenges that shaped my technical and business perspective."
+    "subtitle": "A journey across Salesforce, ERP, QA and operations, focused on reliable and adoptable solutions."
   },
   "projects": {
     "overline": "03. credentials",
     "title": "Education & Achievements",
-    "subtitle": "Certifications, academic background and complementary tracks that support my work in CRM and Salesforce.",
+    "subtitle": "Credentials, education and learning paths that support technical decisions with business perspective.",
     "repository": "Repository",
     "viewDemo": "View demo",
-    "noResults": "No projects found for this filter.",
+    "noResults": "No credentials found for this filter.",
     "viewMoreGithub": "See more on GitHub"
   },
   "skills": {
     "overline": "04. expertise",
     "title": "Specialties",
-    "subtitle": "Skills, methods and practices applied to CRM evolution, automation and operations."
+    "subtitle": "Domains I use to design, sustain and scale CRM, automation and service operations."
   },
   "contact": {
     "overline": "05. contact",
     "title": "Let's Talk",
-    "subtitle": "Get in touch to talk about Salesforce, CRM, automation and business operations.",
+    "subtitle": "A direct channel for conversations about Salesforce, CRM, automation, adoption and operational evolution.",
     "readyPrefix": "Ready to evolve",
     "readyHighlight": "your CRM?",
-    "body": "If you want to talk about Salesforce, Sales Cloud, Service Cloud or process automation, my inbox is open.",
+    "body": "If the challenge involves Salesforce, Sales Cloud, Service Cloud, automation or operational efficiency, let's talk.",
     "sendMessage": "Send message",
     "copy": "Copy",
     "copied": "Copied!",

@@ -18,7 +18,7 @@ export const projects = [
     forks: null,
     categories: ['salesforce', 'certifications'],
     status: { pt: 'Certificações', en: 'Certifications', es: 'Certificaciones' },
-    gradient: 'linear-gradient(135deg, #00A1E0 0%, #2BB3A3 100%)',
+    gradient: 'linear-gradient(135deg, #0B5CAB 0%, #159DB3 100%)',
   },
   {
     id: 2,
@@ -59,7 +59,7 @@ export const projects = [
     forks: null,
     categories: ['education'],
     status: { pt: 'Formação', en: 'Education', es: 'Formación' },
-    gradient: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
+    gradient: 'linear-gradient(135deg, #0B8F61 0%, #159DB3 100%)',
   },
   {
     id: 3,
@@ -78,7 +78,7 @@ export const projects = [
     forks: null,
     categories: ['salesforce', 'learning'],
     status: { pt: 'Perfil', en: 'Profile', es: 'Perfil' },
-    gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+    gradient: 'linear-gradient(135deg, #0B78B6 0%, #159DB3 100%)',
   },
   {
     id: 4,
@@ -101,7 +101,7 @@ export const projects = [
     forks: null,
     categories: ['learning', 'technology'],
     status: { pt: 'Conquistas', en: 'Achievements', es: 'Logros' },
-    gradient: 'linear-gradient(135deg, #60A5FA 0%, #34D399 100%)',
+    gradient: 'linear-gradient(135deg, #2E94D8 0%, #0B8F61 100%)',
   },
   {
     id: 5,
@@ -124,7 +124,7 @@ export const projects = [
     forks: null,
     categories: ['business', 'learning'],
     status: { pt: 'Conquistas', en: 'Achievements', es: 'Logros' },
-    gradient: 'linear-gradient(135deg, #93C5FD 0%, #A7F3D0 100%)',
+    gradient: 'linear-gradient(135deg, #6A8FB1 0%, #159DB3 100%)',
   },
   {
     id: 6,
@@ -147,7 +147,7 @@ export const projects = [
     forks: null,
     categories: ['agile', 'learning'],
     status: { pt: 'Conquistas', en: 'Achievements', es: 'Logros' },
-    gradient: 'linear-gradient(135deg, #38BDF8 0%, #FDE68A 100%)',
+    gradient: 'linear-gradient(135deg, #0B78B6 0%, #B7791F 100%)',
   },
 ];
 

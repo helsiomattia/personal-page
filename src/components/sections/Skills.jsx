@@ -29,15 +29,6 @@ const ICON_MAP = {
   Build: BuildIcon,
 };
 
-const chipVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: (i) => ({
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.3, delay: i * 0.045, ease: 'easeOut' },
-  }),
-};
-
 function SkillCard({ category, cardIndex, lang }) {
   const IconComponent = ICON_MAP[category.icon] || BuildIcon;
   const skills = getLocalizedStringArray(category.skills, lang);
@@ -57,7 +48,7 @@ function SkillCard({ category, cardIndex, lang }) {
           borderTop: `2px solid ${alpha(category.color, 0.6)}`,
           '&:hover': {
             borderTop: `2px solid ${category.color}`,
-            boxShadow: `0 16px 45px ${alpha(category.color, 0.2)}`,
+            boxShadow: `0 12px 32px ${alpha(category.color, 0.16)}`,
           },
         }}
       >
@@ -93,29 +84,33 @@ function SkillCard({ category, cardIndex, lang }) {
 
           {/* Skills */}
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.9 }}>
-            {skills.map((skill, i) => (
-              <motion.div key={skill} custom={i} variants={chipVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                <Chip
-                  label={skill}
-                  size="small"
-                  sx={{
-                    bgcolor: alpha(category.color, 0.1),
-                    border: `1px solid ${alpha(category.color, 0.22)}`,
-                    color: alpha(category.color, 0.9),
-                    fontFamily: '"Fira Code", monospace',
-                    fontSize: '0.73rem',
-                    height: 28,
-                    transition: 'all 0.2s ease',
-                    cursor: 'default',
-                    '&:hover': {
-                      bgcolor: alpha(category.color, 0.2),
-                      borderColor: category.color,
-                      color: '#fff',
-                      transform: 'translateY(-2px)',
-                    },
-                  }}
-                />
-              </motion.div>
+            {skills.map((skill) => (
+              <Chip
+                key={skill}
+                label={skill}
+                size="small"
+                sx={{
+                  maxWidth: '100%',
+                  bgcolor: alpha(category.color, 0.1),
+                  border: `1px solid ${alpha(category.color, 0.22)}`,
+                  color: alpha(category.color, 0.9),
+                  fontFamily: '"Fira Code", monospace',
+                  fontSize: '0.73rem',
+                  height: 28,
+                  transition: 'all 0.2s ease',
+                  cursor: 'default',
+                  '& .MuiChip-label': {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  },
+                  '&:hover': {
+                    bgcolor: alpha(category.color, 0.2),
+                    borderColor: category.color,
+                    color: '#F8FBFE',
+                    transform: 'translateY(-2px)',
+                  },
+                }}
+              />
             ))}
           </Box>
         </CardContent>
@@ -134,7 +129,7 @@ export default function Skills() {
       component="section"
       sx={{
         py: { xs: 8, md: 10 },
-        background: 'linear-gradient(180deg, #FFFFFF 0%, #F6FAFD 100%)',
+        background: 'linear-gradient(180deg, #F3F8FC 0%, #EAF2F8 100%)',
       }}
     >
       <Container maxWidth="lg">

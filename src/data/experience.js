@@ -32,7 +32,7 @@ export const experiences = [
       ],
     },
     technologies: ['Salesforce', 'Sales Cloud', 'Service Cloud', 'Flow Builder', 'CRM', 'Automation'],
-    color: '#1A8CD8',
+    color: '#0B5CAB',
     current: true,
   },
   {
@@ -68,7 +68,7 @@ export const experiences = [
       ],
     },
     technologies: ['Salesforce', 'CRM', 'Objects', 'Layouts', 'Automation', 'Documentation'],
-    color: '#2BB3A3',
+    color: '#159DB3',
     current: false,
   },
   {
@@ -101,7 +101,7 @@ export const experiences = [
       ],
     },
     technologies: ['Salesforce', 'CRM', 'Business Requirements', 'User Support', 'International Teams'],
-    color: '#10B981',
+    color: '#0B8F61',
     current: false,
   },
   {
@@ -134,7 +134,7 @@ export const experiences = [
       ],
     },
     technologies: ['ERP', 'QA', 'Test Planning', 'Data Validation', 'Agribusiness'],
-    color: '#FBBF24',
+    color: '#B7791F',
     current: false,
   },
   {
@@ -167,7 +167,7 @@ export const experiences = [
       ],
     },
     technologies: ['ERP', 'Process Mapping', 'Implementation', 'Training', 'Documentation'],
-    color: '#E91E63',
+    color: '#B83258',
     current: false,
   },
 ];

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import {
   Box,
-  Button,
   Card,
   CardContent,
   Container,
@@ -30,6 +29,10 @@ function ContactCard({ contact, index, t }) {
   const [copied, setCopied] = useState(false);
   const isExternal = contact.href && !contact.href.startsWith('mailto') && !contact.href.startsWith('tel');
   const isClickable = Boolean(contact.href);
+  const isFeatured = index < 2;
+  const cardBackground = isFeatured
+    ? `linear-gradient(135deg, ${alpha(contact.color, 0.12)} 0%, rgba(248,251,254,0.94) 58%)`
+    : 'rgba(248,251,254,0.9)';
 
   const openContact = () => {
     if (!contact.href) return;
@@ -76,29 +79,50 @@ function ContactCard({ contact, index, t }) {
           overflow: 'hidden',
           cursor: isClickable ? 'pointer' : 'default',
           position: 'relative',
-          bgcolor: 'rgba(255,255,255,0.86)',
-          border: '1px solid rgba(31,41,55,0.08)',
+          background: cardBackground,
+          border: `1px solid ${isFeatured ? alpha(contact.color, 0.34) : 'rgba(15,37,55,0.12)'}`,
           borderRadius: '18px',
-          boxShadow: '0 10px 30px rgba(31,41,55,0.055)',
-          backdropFilter: 'blur(8px)',
+          boxShadow: isFeatured
+            ? `0 4px 18px ${alpha(contact.color, 0.18)}`
+            : '0 10px 30px rgba(15,37,55,0.06)',
+          backdropFilter: 'blur(5px)',
+          WebkitBackdropFilter: 'blur(5px)',
+          '@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)))': {
+            bgcolor: '#F8FBFE',
+          },
           textDecoration: 'none',
-          transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)',
+          transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
           '&::before': {
             content: '""',
             position: 'absolute',
             inset: 0,
-            background: `linear-gradient(135deg, ${alpha(contact.color, 0.1)} 0%, transparent 46%)`,
+            background: `linear-gradient(135deg, ${alpha(contact.color, 0.18)} 0%, transparent 52%)`,
             opacity: 0,
-            transition: 'opacity 0.3s ease',
+            transition: 'opacity 0.25s ease',
+            pointerEvents: 'none',
+          },
+          '&::after': {
+            content: '""',
+            position: 'absolute',
+            inset: 1,
+            borderRadius: '17px',
+            border: `1px solid ${alpha(contact.color, 0.16)}`,
+            opacity: isFeatured ? 0.7 : 0,
+            transition: 'opacity 0.25s ease',
             pointerEvents: 'none',
           },
           '&:hover': {
-            transform: 'translateY(-4px)',
-            borderColor: alpha(contact.color, 0.32),
-            boxShadow: `0 18px 42px ${alpha(contact.color, 0.13)}`,
-            bgcolor: '#FFFFFF',
+            transform: 'translateY(-2px)',
+            borderColor: contact.color,
+            boxShadow: isFeatured
+              ? `0 8px 28px ${alpha(contact.color, 0.25)}`
+              : `0 0 16px ${alpha(contact.color, 0.22)}`,
+            bgcolor: '#F8FBFE',
           },
           '&:hover::before': {
+            opacity: 1,
+          },
+          '&:hover::after': {
             opacity: 1,
           },
           '&:hover .contact-icon': {
@@ -198,8 +222,8 @@ function ContactCard({ contact, index, t }) {
                   aria-label={t('contact.copyEmail')}
                   sx={{
                     color: copied ? 'success.main' : 'text.secondary',
-                    bgcolor: copied ? alpha('#10B981', 0.1) : alpha(contact.color, 0.08),
-                    border: `1px solid ${copied ? alpha('#10B981', 0.24) : alpha(contact.color, 0.14)}`,
+                    bgcolor: copied ? alpha('#0B8F61', 0.12) : alpha(contact.color, 0.08),
+                    border: `1px solid ${copied ? alpha('#0B8F61', 0.28) : alpha(contact.color, 0.14)}`,
                     opacity: copied ? 1 : 0.78,
                     transition: 'all 0.25s ease',
                     '&:hover': {
@@ -243,7 +267,7 @@ export default function Contact() {
       value: profile.email,
       href: `mailto:${profile.email}`,
       copyable: true,
-      color: '#FF6B6B',
+      color: '#D94A5F',
     },
     {
       icon: <LinkedInIcon sx={{ fontSize: '1.5rem' }} />,
@@ -259,7 +283,7 @@ export default function Contact() {
       value: profile.githubDisplay,
       href: profile.github,
       copyable: false,
-      color: '#94A3B8',
+      color: '#4A6478',
     },
     {
       icon: <WorkspacePremiumOutlinedIcon sx={{ fontSize: '1.5rem' }} />,
@@ -267,7 +291,7 @@ export default function Contact() {
       value: profile.trailblazerDisplay,
       href: profile.trailblazer,
       copyable: false,
-      color: '#00A1E0',
+      color: '#0B78B6',
     },
     {
       icon: <PhoneOutlinedIcon sx={{ fontSize: '1.5rem' }} />,
@@ -275,7 +299,7 @@ export default function Contact() {
       value: profile.phone,
       href: `tel:+${profile.phone.replace(/\D/g, '')}`,
       copyable: false,
-      color: '#10B981',
+      color: '#0B8F61',
     },
     {
       icon: <PlaceOutlinedIcon sx={{ fontSize: '1.5rem' }} />,
@@ -283,7 +307,7 @@ export default function Contact() {
       value: getLocalizedString(profile.location, lang),
       href: null,
       copyable: false,
-      color: '#FBBF24',
+      color: '#B7791F',
     },
   ];
 
@@ -292,8 +316,8 @@ export default function Contact() {
       id="contact"
       component="section"
       sx={{
-        py: { xs: 8, md: 11 },
-        background: 'linear-gradient(180deg, #F6FAFD 0%, #EAF6FC 100%)',
+        py: { xs: 8, md: 10 },
+        background: 'linear-gradient(180deg, #EAF2F8 0%, #DCEAF4 100%)',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -306,11 +330,11 @@ export default function Contact() {
           width: { xs: 260, md: 420 },
           height: { xs: 260, md: 420 },
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(43,179,163,0.18) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(21,157,179,0.2) 0%, transparent 70%)',
           bottom: '-100px',
           left: '50%',
           transform: 'translateX(-50%)',
-          filter: 'blur(42px)',
+          filter: { xs: 'blur(28px)', md: 'blur(34px)' },
           pointerEvents: 'none',
         }}
       />
@@ -330,8 +354,8 @@ export default function Contact() {
               mb: 5,
               p: { xs: 3, md: 4 },
               borderRadius: '20px',
-              background: 'linear-gradient(135deg, rgba(26,140,216,0.08) 0%, rgba(43,179,163,0.08) 100%)',
-              border: '1px solid rgba(26,140,216,0.18)',
+              background: 'linear-gradient(135deg, rgba(11,92,171,0.1) 0%, rgba(21,157,179,0.1) 100%)',
+              border: '1px solid rgba(11,92,171,0.22)',
             }}
           >
             <Typography
@@ -342,7 +366,7 @@ export default function Contact() {
               <Box
                 component="span"
                 sx={{
-                  background: 'linear-gradient(90deg, #1A8CD8, #2BB3A3)',
+                  background: 'linear-gradient(90deg, #0B5CAB, #159DB3)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -355,31 +379,6 @@ export default function Contact() {
             <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, maxWidth: 480, mx: 'auto' }}>
               {t('contact.body')}
             </Typography>
-
-            <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Button
-                component="a"
-                href={`mailto:${profile.email}`}
-                variant="contained"
-                color="primary"
-                size="large"
-                startIcon={<EmailOutlinedIcon />}
-              >
-                {t('contact.sendMessage')}
-              </Button>
-              <Button
-                component="a"
-                href={profile.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="outlined"
-                color="secondary"
-                size="large"
-                startIcon={<LinkedInIcon />}
-              >
-                LinkedIn
-              </Button>
-            </Box>
           </Box>
         </AnimatedBox>
 

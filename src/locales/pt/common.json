@@ -17,41 +17,41 @@
     "greeting": "Olá, eu sou",
     "viewCredentials": "Ver credenciais",
     "downloadResume": "Baixar currículo",
-    "scroll": "SCROLL",
+    "scroll": "VER TRAJETÓRIA",
     "locationKey": "location"
   },
   "about": {
     "overline": "01. sobre mim",
     "title": "Quem Sou",
-    "subtitle": "Um resumo da minha trajetória em Salesforce, CRM e processos corporativos.",
+    "subtitle": "Como conecto tecnologia, processos e negócio para evoluir operações de CRM com Salesforce.",
     "expertise": "EXPERTISE"
   },
   "experience": {
     "overline": "02. experiência",
     "title": "Trajetória Profissional",
-    "subtitle": "Empresas e desafios que consolidaram minha visão técnica e de negócio."
+    "subtitle": "Uma trajetória construída entre Salesforce, ERP, QA e operações, com foco em soluções confiáveis e adotáveis."
   },
   "projects": {
     "overline": "03. credenciais",
     "title": "Formação & Conquistas",
-    "subtitle": "Certificações, formação acadêmica e trilhas complementares que sustentam minha atuação em CRM e Salesforce.",
+    "subtitle": "Credenciais, formação e aprendizados que sustentam decisões técnicas com visão de negócio.",
     "repository": "Repositório",
     "viewDemo": "Ver demo",
-    "noResults": "Nenhum projeto encontrado para este filtro.",
+    "noResults": "Nenhuma credencial encontrada para este filtro.",
     "viewMoreGithub": "Ver mais no GitHub"
   },
   "skills": {
     "overline": "04. expertise",
     "title": "Especialidades",
-    "subtitle": "Competências, métodos e práticas aplicadas à evolução de CRM, automação e operações."
+    "subtitle": "Domínios que uso para desenhar, sustentar e escalar operações em CRM, automação e atendimento."
   },
   "contact": {
     "overline": "05. contato",
     "title": "Vamos Conversar",
-    "subtitle": "Entre em contato para conversar sobre Salesforce, CRM, automação e operações de negócio.",
+    "subtitle": "Um canal direto para conversas sobre Salesforce, CRM, automação, adoção e evolução operacional.",
     "readyPrefix": "Pronto para evoluir",
     "readyHighlight": "seu CRM?",
-    "body": "Se você quer conversar sobre Salesforce, Sales Cloud, Service Cloud ou automação de processos, minha caixa de entrada está aberta.",
+    "body": "Se o desafio envolve Salesforce, Sales Cloud, Service Cloud, automação ou eficiência operacional, vamos conversar.",
     "sendMessage": "Enviar mensagem",
     "copy": "Copiar",
     "copied": "Copiado!",

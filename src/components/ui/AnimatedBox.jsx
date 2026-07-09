@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 const variants = {
   hidden: { opacity: 0, y: 40 },
@@ -16,6 +16,16 @@ const variants = {
  * @param {{ once?: boolean, margin?: string }} viewport
  */
 export default function AnimatedBox({ children, delay = 0, viewport, style, ...rest }) {
+  const reduceMotion = useReducedMotion();
+
+  if (reduceMotion) {
+    return (
+      <div style={style} {...rest}>
+        {children}
+      </div>
+    );
+  }
+
   return (
     <motion.div
       variants={variants}

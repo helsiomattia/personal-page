@@ -12,7 +12,19 @@ const Skills = lazy(() => import('./components/sections/Skills'));
 const Contact = lazy(() => import('./components/sections/Contact'));
 
 const globalStyles = `
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  :focus-visible {
+    outline: 3px solid rgba(11, 92, 171, 0.3);
+    outline-offset: 3px;
+  }
 
   @keyframes float1 {
     0%, 100% { transform: translate(0, 0) scale(1); }
@@ -33,9 +45,23 @@ const globalStyles = `
     50%       { opacity: 0; }
   }
   @keyframes pulse-ring {
-    0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(26, 140, 216, 0.35); }
-    70%  { transform: scale(1);    box-shadow: 0 0 0 10px rgba(26, 140, 216, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(26, 140, 216, 0); }
+    0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(11, 92, 171, 0.35); }
+    70%  { transform: scale(1);    box-shadow: 0 0 0 10px rgba(11, 92, 171, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(11, 92, 171, 0); }
+  }
+
+  @supports (overflow-x: clip) {
+    body { overflow-x: clip; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 `;
 
@@ -44,7 +70,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <GlobalStyles styles={globalStyles} />
-      <Box sx={{ overflowX: 'hidden' }}>
+      <Box sx={{ overflowX: 'hidden', '@supports (overflow-x: clip)': { overflowX: 'clip' } }}>
         <Navbar />
         <main>
           <Hero />

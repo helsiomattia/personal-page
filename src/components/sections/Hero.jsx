@@ -4,20 +4,14 @@ import {
   Button,
   Chip,
   Container,
-  IconButton,
-  Tooltip,
   Typography,
   alpha,
 } from '@mui/material';
-import { motion, AnimatePresence } from 'framer-motion';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { profile } from '../../data/profile';
 import { getLocalizedString, getLocalizedStringArray } from '../../utils/i18nHelper';
+import { scrollToSection } from '../../utils/scrollToSection';
 
 /* ── Gradient orb helper ─────────────────────────────────── */
 function Orb({ sx }) {
@@ -27,7 +21,7 @@ function Orb({ sx }) {
       sx={{
         position: 'absolute',
         borderRadius: '50%',
-        filter: 'blur(56px)',
+        filter: { xs: 'blur(32px)', md: 'blur(40px)' },
         pointerEvents: 'none',
         ...sx,
       }}
@@ -84,23 +78,27 @@ export default function Hero() {
   const { i18n, t } = useTranslation();
   const lang = i18n.resolvedLanguage || 'pt';
   const roles = getLocalizedStringArray(profile.roles, lang);
+  const valuePillars = getLocalizedStringArray(profile.valuePillars, lang);
   const typedRole = useTypewriter(roles);
-
-  const scrollToProjects = () => {
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <Box
       id="home"
       component="section"
       sx={{
-        minHeight: { xs: '88vh', md: '84vh' },
+        minHeight: '100vh',
+        '@supports (height: 100svh)': {
+          minHeight: '100svh',
+        },
+        '@supports (height: 100dvh)': {
+          minHeight: '100dvh',
+        },
+        boxSizing: 'border-box',
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(180deg, #F6FAFD 0%, #EAF6FC 100%)',
+        background: 'linear-gradient(180deg, #EAF2F8 0%, #DCEAF4 100%)',
         pt: { xs: 9, md: 8 },
         pb: { xs: 6, md: 7 },
       }}
@@ -110,7 +108,7 @@ export default function Hero() {
         sx={{
           width: { xs: 300, md: 520 },
           height: { xs: 300, md: 520 },
-          background: 'radial-gradient(circle, rgba(26,140,216,0.18) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(11,92,171,0.24) 0%, transparent 70%)',
           top: '-80px',
           left: { xs: '-100px', md: '-150px' },
           animation: 'float1 22s ease-in-out infinite',
@@ -120,7 +118,7 @@ export default function Hero() {
         sx={{
           width: { xs: 260, md: 420 },
           height: { xs: 260, md: 420 },
-          background: 'radial-gradient(circle, rgba(43,179,163,0.16) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(21,157,179,0.18) 0%, transparent 70%)',
           bottom: { xs: '-50px', md: '0px' },
           right: { xs: '-80px', md: '-100px' },
           animation: 'float2 18s ease-in-out infinite',
@@ -130,7 +128,7 @@ export default function Hero() {
         sx={{
           width: { xs: 180, md: 300 },
           height: { xs: 180, md: 300 },
-          background: 'radial-gradient(circle, rgba(26,140,216,0.1) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(11,92,171,0.13) 0%, transparent 70%)',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
@@ -145,7 +143,7 @@ export default function Hero() {
           position: 'absolute',
           inset: 0,
           backgroundImage:
-            'radial-gradient(rgba(26,140,216,0.1) 1px, transparent 1px)',
+            'radial-gradient(rgba(11,92,171,0.14) 1px, transparent 1px)',
           backgroundSize: '28px 28px',
           pointerEvents: 'none',
         }}
@@ -159,17 +157,24 @@ export default function Hero() {
             <motion.div variants={itemVariants}>
               <Chip
                 icon={
-                  <FiberManualRecordIcon
-                    sx={{ fontSize: '10px !important', color: '#10B981 !important', animation: 'pulse-ring 2s infinite' }}
+                  <Box
+                    component="span"
+                    sx={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: '50%',
+                      bgcolor: '#0B8F61',
+                      animation: 'pulse-ring 2s infinite',
+                    }}
                   />
                 }
                 label={getLocalizedString(profile.availableLabel, lang)}
                 size="small"
                 sx={{
                   mb: 2,
-                  bgcolor: alpha('#10B981', 0.12),
-                  border: `1px solid ${alpha('#10B981', 0.35)}`,
-                  color: '#10B981',
+                  bgcolor: alpha('#0B8F61', 0.13),
+                  border: `1px solid ${alpha('#0B8F61', 0.36)}`,
+                  color: '#0B8F61',
                   fontFamily: '"Fira Code", monospace',
                   fontSize: '0.75rem',
                   letterSpacing: '0.03em',
@@ -206,7 +211,7 @@ export default function Hero() {
               <Box
                 component="span"
                 sx={{
-                  background: 'linear-gradient(135deg, #1F2937 30%, #4B6680 100%)',
+                  background: 'linear-gradient(135deg, #0F2537 30%, #284B68 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -234,7 +239,7 @@ export default function Hero() {
               <Box
                 component="span"
                 sx={{
-                  background: 'linear-gradient(90deg, #1A8CD8 0%, #2BB3A3 100%)',
+                  background: 'linear-gradient(90deg, #0B5CAB 0%, #159DB3 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -265,7 +270,7 @@ export default function Hero() {
               sx={{
                 maxWidth: { xs: '100%', md: '580px' },
                 color: 'text.secondary',
-                mb: 3.5,
+                mb: 2.25,
                 fontSize: { xs: '1rem', md: '1.1rem' },
                 lineHeight: 1.75,
               }}
@@ -274,27 +279,55 @@ export default function Hero() {
             </Typography>
           </motion.div>
 
-          {/* CTA Buttons */}
           <motion.div variants={itemVariants}>
             <Box
               sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                gap: 2,
-                alignItems: 'center',
-                mb: 3.5,
+                gap: 1,
+                maxWidth: { xs: '100%', md: 680 },
+                mb: 3,
               }}
             >
-              <Button
-                variant="contained"
-                color="primary"
-                size="large"
-                onClick={scrollToProjects}
-              >
-                {t('hero.viewCredentials')}
-              </Button>
+              {valuePillars.map((pillar) => (
+                <Box
+                  key={pillar}
+                  component="span"
+                  sx={{
+                    px: { xs: 1.15, sm: 1.4 },
+                    py: 0.75,
+                    maxWidth: '100%',
+                    borderRadius: '999px',
+                    border: '1px solid rgba(11,92,171,0.24)',
+                    bgcolor: 'rgba(248,251,254,0.72)',
+                    color: 'text.secondary',
+                    fontFamily: '"Fira Code", monospace',
+                    fontSize: { xs: '0.68rem', sm: '0.72rem' },
+                    fontWeight: 600,
+                    lineHeight: 1.4,
+                    boxShadow: '0 8px 24px rgba(15,37,55,0.06)',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: { xs: 'normal', sm: 'nowrap' },
+                  }}
+                >
+                  {pillar}
+                </Box>
+              ))}
+            </Box>
+          </motion.div>
 
-              {profile.resume && (
+          {profile.resume && (
+            <motion.div variants={itemVariants}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: 2,
+                  alignItems: 'center',
+                  mb: 3.5,
+                }}
+              >
                 <Button
                   component="a"
                   href={profile.resume}
@@ -302,56 +335,12 @@ export default function Hero() {
                   variant="outlined"
                   color="primary"
                   size="large"
-                  startIcon={<FileDownloadOutlinedIcon />}
                 >
                   {t('hero.downloadResume')}
                 </Button>
-              )}
-
-              <Box sx={{ display: 'flex', gap: 1 }}>
-                <Tooltip title="GitHub" arrow>
-                  <IconButton
-                    component="a"
-                    href={profile.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                    sx={{
-                      border: '1px solid rgba(31,41,55,0.12)',
-                      color: 'text.secondary',
-                      '&:hover': {
-                        borderColor: 'primary.main',
-                        color: 'primary.main',
-                        bgcolor: alpha('#1A8CD8', 0.08),
-                      },
-                    }}
-                  >
-                    <GitHubIcon />
-                  </IconButton>
-                </Tooltip>
-                <Tooltip title="LinkedIn" arrow>
-                  <IconButton
-                    component="a"
-                    href={profile.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                    sx={{
-                      border: '1px solid rgba(31,41,55,0.12)',
-                      color: 'text.secondary',
-                      '&:hover': {
-                        borderColor: 'secondary.main',
-                        color: 'secondary.main',
-                        bgcolor: alpha('#2BB3A3', 0.08),
-                      },
-                    }}
-                  >
-                    <LinkedInIcon />
-                  </IconButton>
-                </Tooltip>
               </Box>
-            </Box>
-          </motion.div>
+            </motion.div>
+          )}
 
           {/* Location & code flavor */}
           <motion.div variants={itemVariants}>
@@ -389,7 +378,7 @@ export default function Hero() {
             '&:hover': { opacity: 1 },
             transition: 'opacity 0.3s',
           }}
-          onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+          onClick={() => scrollToSection('about')}
         >
           <Typography variant="caption" sx={{ fontFamily: '"Fira Code", monospace', fontSize: '0.65rem', letterSpacing: '0.1em' }}>
             {t('hero.scroll')}
@@ -398,7 +387,16 @@ export default function Hero() {
             animate={{ y: [0, 6, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
           >
-            <KeyboardArrowDownIcon />
+            <Box
+              aria-hidden="true"
+              sx={{
+                width: 12,
+                height: 12,
+                borderRight: '2px solid currentColor',
+                borderBottom: '2px solid currentColor',
+                transform: 'rotate(45deg)',
+              }}
+            />
           </motion.div>
         </Box>
       </Container>
